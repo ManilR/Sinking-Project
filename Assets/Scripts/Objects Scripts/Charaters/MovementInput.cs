@@ -31,19 +31,12 @@ public class MovementInput : MonoBehaviour
         Vector2 velocityChange = targetVelocity - m_rigidbody.velocity;
         m_rigidbody.AddForce(velocityChange);
 
-        Vector2 test = new Vector2(1, 0.85f);
-        if (hInput == -1)
-        {
-            m_TranslationSpeed *= 2;
-            test.y *= -0.5f;
-        }
-        if(m_rigidbody.IsTouching())
+        Vector2 forward = new Vector2(1, 0.85f).normalized;
+       
         
-        targetVelocity = hInput * m_TranslationSpeed * test; //* Vector2.ProjectOnPlane(transform.forward, Vector2.up).normalized;
+        targetVelocity = hInput * m_TranslationSpeed * forward; //* Vector2.ProjectOnPlane(transform.forward, Vector2.up).normalized;
         velocityChange = targetVelocity - m_rigidbody.velocity;
         m_rigidbody.AddForce(velocityChange);//, ForceMode2D.Force
-        if (hInput == -1)
-            m_TranslationSpeed /= 2;
     }
     private void Update()
     {
