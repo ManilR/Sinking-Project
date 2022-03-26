@@ -14,19 +14,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float slopeCheckDistance;
     [SerializeField]
-    private float maxSlopeAngle;
-    [SerializeField]
     private Transform groundCheck;
     [SerializeField]
     private LayerMask whatIsGround;
-    [SerializeField]
-    private PhysicsMaterial2D noFriction;
-    [SerializeField]
-    private PhysicsMaterial2D fullFriction;
 
     private float xInput;
     private float slopeDownAngle;
-    private float slopeSideAngle;
+
     private float lastSlopeAngle;
 
     private int facingDirection = 1;
@@ -94,7 +88,7 @@ public class PlayerController : MonoBehaviour
             isJumping = false;
         }
 
-        if(isGrounded && !isJumping && slopeDownAngle <= maxSlopeAngle)
+        if(isGrounded && !isJumping)
         {
             canJump = true;
         }
@@ -114,22 +108,12 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D slopeHitFront = Physics2D.Raycast(checkPos, transform.right, slopeCheckDistance, whatIsGround);
         RaycastHit2D slopeHitBack = Physics2D.Raycast(checkPos, -transform.right, slopeCheckDistance, whatIsGround);
 
-        if (slopeHitFront)
+        if (slopeHitFront || slopeHitBack)
         {
             isOnSlope = true;
-
-            slopeSideAngle = Vector2.Angle(slopeHitFront.normal, Vector2.up);
-
-        }
-        else if (slopeHitBack)
-        {
-            isOnSlope = true;
-
-            slopeSideAngle = Vector2.Angle(slopeHitBack.normal, Vector2.up);
         }
         else
         {
-            slopeSideAngle = 0.0f;
             isOnSlope = false;
         }
 
@@ -158,23 +142,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (slopeDownAngle > maxSlopeAngle || slopeSideAngle > maxSlopeAngle)
-        {
-            canWalkOnSlope = false;
-        }
-        else
-        {
-            canWalkOnSlope = true;
-        }
-
-        if (isOnSlope && canWalkOnSlope && xInput == 0.0f)
-        {
-            rb.sharedMaterial = fullFriction;
-        }
-        else
-        {
-            rb.sharedMaterial = noFriction;
-        }
     }
 
     private void Jump()
