@@ -17,9 +17,17 @@ public class PlayerController : MonoBehaviour
     private Transform groundCheck;
     [SerializeField]
     private LayerMask whatIsGround;
+    [SerializeField]
+    private LayerMask whatIsLadder;
+    [SerializeField]
+    private LayerMask whatIsWater;
+    [SerializeField]
+    private GameObject boat;
 
     private float xInput;
+    private float yInput;
     private float slopeDownAngle;
+    private float baseGravityScale;
 
     private float lastSlopeAngle;
 
@@ -28,8 +36,11 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isOnSlope;
     private bool isJumping;
+    private bool isOnLadder;
+    private bool isOnBoat;
     private bool canWalkOnSlope;
     private bool canJump;
+    
 
     private Vector2 newVelocity;
     private Vector2 newForce;
@@ -38,14 +49,17 @@ public class PlayerController : MonoBehaviour
     private Vector2 slopeNormalPerp;
 
     private Rigidbody2D rb;
+    private Rigidbody2D rbBoat;
     private CapsuleCollider2D cc;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rbBoat = boat.GetComponent<Rigidbody2D>();
         cc = GetComponent<CapsuleCollider2D>();
 
         capsuleColliderSize = cc.size;
+        baseGravityScale = rb.gravityScale;
     }
 
     private void Update()
@@ -63,6 +77,7 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
 
         if (xInput == 1 && facingDirection == -1)
         {
@@ -82,8 +97,10 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        isOnLadder = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsLadder);
+        isOnBoat = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsWater);
 
-        if(rb.velocity.y <= 0.0f)
+        if (rb.velocity.y <= 0.0f)
         {
             isJumping = false;
         }
@@ -94,6 +111,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
 
     private void SlopeCheck()
     {
@@ -159,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
+        
         if (isGrounded && !isOnSlope && !isJumping) //if not on slope
         {
             Debug.Log("This one");
@@ -174,6 +193,23 @@ public class PlayerController : MonoBehaviour
         {
             newVelocity.Set(movementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
+        }
+        if (isOnLadder && !isOnSlope && !isJumping) //if not on slope
+        {
+            rb.gravityScale = 0;
+            Debug.Log("This two");
+            newVelocity.Set(movementSpeed * xInput, movementSpeed * yInput);
+            rb.velocity = newVelocity;
+        }
+        else
+        {
+            rb.gravityScale = baseGravityScale;
+        }
+
+        if (isOnBoat)
+        {
+            //Debug.Log("testBoat");
+            rb.velocity = rb.velocity + rbBoat.velocity;
         }
 
     }
