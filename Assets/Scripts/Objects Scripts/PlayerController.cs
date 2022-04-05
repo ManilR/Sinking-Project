@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private LayerMask whatIsWater;
     [SerializeField]
     private GameObject boat;
+    [SerializeField]
+    private GameObject water;
 
     private float xInput;
     private float yInput;
@@ -60,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
         capsuleColliderSize = cc.size;
         baseGravityScale = rb.gravityScale;
+
+        Physics2D.IgnoreCollision(cc, water.GetComponent<BoxCollider2D>());
     }
 
     private void Update()
