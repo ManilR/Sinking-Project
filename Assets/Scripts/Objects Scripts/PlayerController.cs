@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsWater;
     [SerializeField]
+    private LayerMask whatIsUsable;
+    [SerializeField]
     private GameObject boat;
     [SerializeField]
     private GameObject water;
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isOnSlope;
     private bool isJumping;
+    private bool isOnUsable;
+    private bool isActing;
     private bool isOnLadder;
     private bool isOnBoat;
     private bool canWalkOnSlope;
@@ -53,6 +57,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D rbBoat;
     private CapsuleCollider2D cc;
+
+    private GameObject usable;
 
     private void Start()
     {
@@ -83,11 +89,11 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        if (xInput == 1 && facingDirection == -1)
+        if (xInput == 1 && facingDirection == -1 && !isActing)
         {
             Flip();
         }
-        else if (xInput == -1 && facingDirection == 1)
+        else if (xInput == -1 && facingDirection == 1 && !isActing)
         {
             Flip();
         }
@@ -97,12 +103,41 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
+        if (isActing && (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
+        {
+            isActing = false;
+        }
+        else if (isOnUsable && !isActing && Input.GetButtonDown("Fire1") )
+        {
+            isActing = true;
+        }
+        
+
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("test1");
+        if(col.tag == "Usable" && usable == null)
+        {
+
+            usable = col.gameObject;
+            Debug.Log(col.gameObject.name);
+        }
+        
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        Debug.Log("test2");
+        usable = null;
+
     }
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isOnLadder = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsLadder);
         isOnBoat = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsWater);
+        isOnUsable = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsUsable);
 
         if (rb.velocity.y <= 0.0f)
         {
@@ -216,6 +251,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = rb.velocity + rbBoat.velocity;
         }
 
+        if (isActing)
+        {
+            rb.velocity -= newVelocity;
+        }
     }
 
     private void Flip()
