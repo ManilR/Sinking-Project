@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D cc;
 
     private GameObject usable;
+    private InputUsable inputUsable;
 
     private void Start()
     {
@@ -103,9 +104,23 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
-        if (isActing && (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
+        if (isActing )
         {
-            isActing = false;
+            if((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
+                isActing = false;
+            else
+            {
+                if (Input.GetButtonDown("Jump"))
+                    inputUsable.setInput("Action");
+                if (yInput == 1)
+                    inputUsable.setInput("Up");
+                if (yInput == -1)
+                    inputUsable.setInput("Down");
+                if (xInput == 1)
+                    inputUsable.setInput("Right");
+                if (xInput == -1)
+                    inputUsable.setInput("Left");
+            }
         }
         else if (isOnUsable && !isActing && Input.GetButtonDown("Fire1") )
         {
@@ -122,6 +137,7 @@ public class PlayerController : MonoBehaviour
         {
 
             usable = col.gameObject;
+            inputUsable = col.GetComponentInParent(typeof(InputUsable)) as InputUsable;
             Debug.Log(col.gameObject.name);
         }
         
@@ -136,8 +152,9 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isOnLadder = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsLadder);
-        isOnBoat = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsWater);
         isOnUsable = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsUsable);
+
+        isOnBoat = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsWater);
 
         if (rb.velocity.y <= 0.0f)
         {
