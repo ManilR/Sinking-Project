@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     private GameObject usable;
     private InputUsable inputUsable;
 
+    public Animator animator;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -239,16 +241,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log("This one");
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
             rb.velocity = newVelocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
         else if (!isGrounded) //If in air
         {
             newVelocity.Set(movementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
         if (isOnLadder && !isOnSlope && !isJumping) //if not on slope
         {
@@ -256,6 +261,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("This two");
             newVelocity.Set(movementSpeed * xInput, movementSpeed * yInput);
             rb.velocity = newVelocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
         else
         {
@@ -266,11 +272,13 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("testBoat");
             rb.velocity = rb.velocity + rbBoat.velocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
 
         if (isActing)
         {
             rb.velocity -= newVelocity;
+            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
     }
 
