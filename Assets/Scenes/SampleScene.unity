@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279145355}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: -2}
+  m_LocalPosition: {x: 2.06, y: 14.87, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 622818150}
@@ -889,7 +889,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1018323756
 MeshFilter:
@@ -1537,11 +1537,11 @@ MonoBehaviour:
   damping: 0.02
   springConstant2: 0.1
   damping2: 0.1
-  randomRipplesFrequency: 1
-  randomRipplesSize: 5
-  randomRipplesForce: 5
+  randomRipplesFrequency: 8.21
+  randomRipplesSize: 11.37
+  randomRipplesForce: 28.51
   sortingLayer: 0
-  orderInLayer: 0
+  orderInLayer: -1
   mf: {fileID: 1018323756}
   mr: {fileID: 1018323755}
   boxCol: {fileID: 1018323754}
@@ -1871,6 +1871,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2755092744559857319, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3078556344951923917, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_LocalPosition.x
