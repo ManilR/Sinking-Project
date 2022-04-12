@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D cc;
 
     private GameObject usable;
-    private InputUsable inputUsable;
+    private int usableID;
 
     public Animator animator;
 
@@ -112,16 +112,17 @@ public class PlayerController : MonoBehaviour
                 isActing = false;
             else
             {
+                Debug.Log(usableID.ToString());
                 if (Input.GetButtonDown("Jump"))
-                    inputUsable.setInput("Action");
+                    UsableEventManger.current.TriggerAction(usableID);
                 if (yInput == 1)
-                    inputUsable.setInput("Up");
+                    UsableEventManger.current.TriggerUp(usableID);
                 if (yInput == -1)
-                    inputUsable.setInput("Down");
+                    UsableEventManger.current.TriggerDown(usableID);
                 if (xInput == 1)
-                    inputUsable.setInput("Right");
+                    UsableEventManger.current.TriggerRight(usableID);
                 if (xInput == -1)
-                    inputUsable.setInput("Left");
+                    UsableEventManger.current.TriggerLeft(usableID);
             }
         }
         else if (isOnUsable && !isActing && Input.GetButtonDown("Fire1") )
@@ -134,19 +135,18 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("test1");
         if(col.tag == "Usable" && usable == null)
         {
 
             usable = col.gameObject;
-            inputUsable = col.GetComponentInParent(typeof(InputUsable)) as InputUsable;
-            Debug.Log(col.gameObject.name);
+            objectID objectID = usable.GetComponentInParent<objectID>();
+            usableID = objectID.myID;
+            //Debug.Log(col.gameObject.name);
         }
         
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("test2");
         usable = null;
 
     }

@@ -4,32 +4,53 @@ using UnityEngine;
 
 public class Canon : MonoBehaviour
 {
-    InputUsable inputManager;
+    private int ID;
+
     Transform pivot;
     string input;
     // Start is called before the first frame update
     void Start()
     {
-        inputManager = gameObject.GetComponent<InputUsable>();
+        objectID objectID = this.GetComponent<objectID>();
+        ID = objectID.myID;
         pivot = gameObject.transform.GetChild(1);
+
+        UsableEventManger.current.onAction += shoot;
+        UsableEventManger.current.onUp += goUp;
+        UsableEventManger.current.onDown += goDown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (inputManager.getInput() != null)
-        {
-            Debug.Log(inputManager.getInput());
-            input = inputManager.getInput();
-        }
-        else
-            input = null;
 
-        if (input == "Up" && pivot.rotation.z < 80)
-            pivot.Rotate(new Vector3(0,0,1), 0.5f);
-        if (input == "Down" && pivot.rotation.z > 15)
-            pivot.Rotate(new Vector3(0, 0, 1), -0.5f);
     }
 
-    
+    private void shoot(int id)
+    {
+        if(id == this.ID)
+        {
+            Debug.Log("Shoot");
+        }
+            
+    }
+
+    private void goUp(int id)
+    {
+        if (id == this.ID)
+        {
+            if (pivot.rotation.eulerAngles.z  <= 80)
+                pivot.Rotate(new Vector3(0, 0, 1), 0.5f);
+        }
+    }
+    private void goDown(int id)
+    {
+        if (id == this.ID)
+        {
+            if (pivot.rotation.eulerAngles.z >= 15)
+                pivot.Rotate(new Vector3(0, 0, 1), -0.5f);
+        }
+    }
+
+
 }

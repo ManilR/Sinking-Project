@@ -352,14 +352,19 @@ public class WaterWaves2D:MonoBehaviour{
 			closest=other.ClosestPoint(other.transform.position)
 		#else
 			closest=other.bounds.ClosestPoint(other.transform.position);
-		#endif
-		StartCoroutine(DelayedImpact(
-			closest,
-			(Vector2)other.bounds.extents,
-			other.GetComponent<Rigidbody2D>().velocity,
-			0.1f
-		));
+#endif
+		if (other.GetComponent<Rigidbody2D>() != null)
+		{
+			StartCoroutine(DelayedImpact(
+
+				closest,
+				(Vector2)other.bounds.extents,
+				other.GetComponent<Rigidbody2D>().velocity,
+				0.1f
+			));
+		
 		PlayEnterSound();
+		}
 	}
 	
 	private void OnTriggerExit2D(Collider2D other){
