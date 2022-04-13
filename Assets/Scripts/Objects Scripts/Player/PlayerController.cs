@@ -112,7 +112,6 @@ public class PlayerController : MonoBehaviour
                 isActing = false;
             else
             {
-                Debug.Log(usableID.ToString());
                 if (Input.GetButtonDown("Jump"))
                     UsableEventManger.current.TriggerAction(usableID);
                 if (yInput == 1)
