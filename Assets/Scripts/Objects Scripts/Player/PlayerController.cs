@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private GameObject usable;
     private int usableID;
+    private Usable usableScript;
 
     public Animator animator;
 
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isActing)
         {
             Jump();
         }
@@ -109,7 +110,11 @@ public class PlayerController : MonoBehaviour
         if (isActing )
         {
             if((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
+            {
                 isActing = false;
+                usableScript.isUsed = false;
+            }
+                
             else
             {
                 if (Input.GetButtonDown("Jump"))
@@ -124,12 +129,16 @@ public class PlayerController : MonoBehaviour
                     UsableEventManger.current.TriggerLeft(usableID);
             }
         }
-        else if (isOnUsable && !isActing && Input.GetButtonDown("Fire1") )
+        else if (usable != null && !isActing && Input.GetButtonDown("Fire1") )
         {
             isActing = true;
+            usableScript.isUsed = true;
         }
         
-
+        if(usable == null && isActing)
+        {
+            isActing = false;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -140,7 +149,8 @@ public class PlayerController : MonoBehaviour
             usable = col.gameObject;
             objectID objectID = usable.GetComponentInParent<objectID>();
             usableID = objectID.myID;
-            //Debug.Log(col.gameObject.name);
+            usableScript = usable.GetComponentInParent<Usable>();
+            Debug.Log(isOnUsable);
         }
         
     }

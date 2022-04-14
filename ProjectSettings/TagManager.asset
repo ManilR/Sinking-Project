@@ -7,6 +7,7 @@ TagManager:
   - Ladder
   - Canon
   - Usable
+  - Hole
   layers:
   - Default
   - TransparentFX
