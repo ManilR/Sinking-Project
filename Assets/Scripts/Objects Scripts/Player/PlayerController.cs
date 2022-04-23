@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField]
+    private int id ;
     [SerializeField]
     private float movementSpeed;
     [SerializeField]
@@ -93,8 +94,9 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInput()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Horizontal_"+id);
+
+        yInput = Input.GetAxisRaw("Vertical_" + id);
 
         if (xInput == 1 && facingDirection == -1 && !isActing)
         {
@@ -105,14 +107,14 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        if (Input.GetButtonDown("Jump") && !isActing)
+        if (Input.GetButtonDown("Jump_" + id) && !isActing)
         {
             Jump();
         }
 
         if (isActing )
         {
-            if((Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")))
+            if(Input.GetButtonDown("Fire_" + id))
             {
                 isActing = false;
                 usableScript.isUsed = false;
@@ -120,7 +122,7 @@ public class PlayerController : MonoBehaviour
                 
             else
             {
-                if (Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown("Jump_" + id))
                     UsableEventManger.current.TriggerAction(usableID);
                 if (yInput == 1)
                     UsableEventManger.current.TriggerUp(usableID);
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour
                     UsableEventManger.current.TriggerLeft(usableID);
             }
         }
-        else if (usable != null && !isActing && Input.GetButtonDown("Fire1") )
+        else if (usable != null && !isActing && Input.GetButtonDown("Fire_" + id) )
         {
             isActing = true;
             usableScript.isUsed = true;
@@ -153,7 +155,6 @@ public class PlayerController : MonoBehaviour
             objectID objectID = usable.GetComponentInParent<objectID>();
             usableID = objectID.myID;
             usableScript = usable.GetComponentInParent<Usable>();
-            Debug.Log(isOnUsable);
         }
         if (col.gameObject.name == "OnBoatCheck")
             isOnBoat = true;
@@ -185,8 +186,6 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
-
-        Debug.Log(isOnBoat);
 
     }
 
@@ -289,7 +288,6 @@ public class PlayerController : MonoBehaviour
         if (isOnLadder && !isOnSlope && !isJumping) //if not on slope
         {
             rb.gravityScale = 0;
-            Debug.Log("This two");
             newVelocity.Set(movementSpeed * xInput, movementSpeed * yInput);
             rb.velocity = newVelocity;
             animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
@@ -311,7 +309,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity -= newVelocity;
             animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
         }
-    }
+    }  
 
     private void Flip()
     {
