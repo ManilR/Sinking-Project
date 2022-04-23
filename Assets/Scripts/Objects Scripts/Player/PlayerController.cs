@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     private bool isActing;
     private bool isOnLadder;
     private bool isOnBoat;
+    private bool isInWater;
     private bool canWalkOnSlope;
     private bool canJump;
     
@@ -74,16 +75,18 @@ public class PlayerController : MonoBehaviour
         baseGravityScale = rb.gravityScale;
 
         Physics2D.IgnoreCollision(cc, water.GetComponent<BoxCollider2D>());
+
     }
 
     private void Update()
     {
-        CheckInput();     
+        CheckInput();
     }
 
     private void FixedUpdate()
     {
         CheckGround();
+        CheckOnBoat();
         SlopeCheck();
         ApplyMovement();
     }
@@ -152,22 +155,28 @@ public class PlayerController : MonoBehaviour
             usableScript = usable.GetComponentInParent<Usable>();
             Debug.Log(isOnUsable);
         }
-        
+        if (col.gameObject.name == "OnBoatCheck")
+            isOnBoat = true;
     }
     void OnTriggerExit2D(Collider2D col)
     {
-        usable = null;
+        if(col.tag == "Usable")
+            usable = null;
 
+
+        if (col.gameObject.name == "OnBoatCheck")
+            isOnBoat = false;
     }
+
+
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
         isOnLadder = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsLadder);
         isOnUsable = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsUsable);
 
-        isOnBoat = !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsWater);
-
-        if (rb.velocity.y <= 0.0f)
+        
+        if (rb.velocity.y <=  0.0f)
         {
             isJumping = false;
         }
@@ -177,8 +186,21 @@ public class PlayerController : MonoBehaviour
             canJump = true;
         }
 
+        Debug.Log(isOnBoat);
+
     }
 
+    private void CheckOnBoat()
+    {
+        if (isOnBoat)
+        {
+            Physics2D.IgnoreCollision(cc, water.GetComponent<BoxCollider2D>());
+        }
+        else
+        {
+            Physics2D.IgnoreCollision(cc, water.GetComponent<BoxCollider2D>(), false);
+        }
+    }
 
     private void SlopeCheck()
     {

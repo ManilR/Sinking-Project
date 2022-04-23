@@ -8,6 +8,8 @@ TagManager:
   - Canon
   - Usable
   - Hole
+  - Canon Ball
+  - Boat
   layers:
   - Default
   - TransparentFX

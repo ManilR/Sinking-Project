@@ -126,7 +126,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -5.74, y: 2.39, z: 0}
-  m_TranslationOffset: {x: -1.4008145, y: 11.639999, z: -1.5}
+  m_TranslationOffset: {x: -0.95666695, y: 8.731666, z: -1.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -256,7 +256,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: 5.11, y: -3.95, z: 0}
-  m_TranslationOffset: {x: 0.40751934, y: 10.583333, z: -1.5}
+  m_TranslationOffset: {x: 0.8516669, y: 7.674999, z: -1.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -419,7 +419,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -5.91, y: -7.32, z: 0}
-  m_TranslationOffset: {x: -1.4291482, y: 10.021666, z: -1.5}
+  m_TranslationOffset: {x: -0.9850006, y: 7.1133313, z: -1.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -650,7 +650,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -15.61, y: -4.73, z: 0}
-  m_TranslationOffset: {x: -3.0458155, y: 10.453331, z: -1.5}
+  m_TranslationOffset: {x: -2.6016674, y: 7.5449986, z: -1.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -780,7 +780,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -19.66, y: -2.4, z: 0}
-  m_TranslationOffset: {x: -3.7208166, y: 10.841665, z: -1.5}
+  m_TranslationOffset: {x: -3.2766685, y: 7.933332, z: -1.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1

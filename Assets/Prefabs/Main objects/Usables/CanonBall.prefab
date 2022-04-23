@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6420164612156379608}
   - component: {fileID: 6420164612156379609}
   - component: {fileID: 6420164612156379606}
+  - component: {fileID: 6475967529644549391}
   m_Layer: 0
   m_Name: CanonBall
-  m_TagString: Untagged
+  m_TagString: Canon Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,3 +123,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6475967529644549391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420164612156379607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee69523025b46e949b4ab5d605ca4810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
