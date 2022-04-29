@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.IsPlaying) return;
         CheckInput();
     }
 
@@ -123,15 +124,15 @@ public class PlayerController : MonoBehaviour
             else
             {
                 if (Input.GetButtonDown("Jump_" + id))
-                    UsableEventManger.current.TriggerAction(usableID);
+                    UsableEventManager.current.TriggerAction(usableID);
                 if (yInput == 1)
-                    UsableEventManger.current.TriggerUp(usableID);
+                    UsableEventManager.current.TriggerUp(usableID);
                 if (yInput == -1)
-                    UsableEventManger.current.TriggerDown(usableID);
+                    UsableEventManager.current.TriggerDown(usableID);
                 if (xInput == 1)
-                    UsableEventManger.current.TriggerRight(usableID);
+                    UsableEventManager.current.TriggerRight(usableID);
                 if (xInput == -1)
-                    UsableEventManger.current.TriggerLeft(usableID);
+                    UsableEventManager.current.TriggerLeft(usableID);
             }
         }
         else if (usable != null && !isActing && Input.GetButtonDown("Fire_" + id) )

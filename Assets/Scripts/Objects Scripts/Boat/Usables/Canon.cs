@@ -32,11 +32,11 @@ public class Canon : MonoBehaviour
         pivot = gameObject.transform.GetChild(1);
         Line.positionCount = NB_TRAJECTORY_POINTS;
 
-        UsableEventManger.current.onAction += shoot;
-        UsableEventManger.current.onUp += goUp;
-        UsableEventManger.current.onDown += goDown;
-        UsableEventManger.current.onRight += addPower;
-        UsableEventManger.current.onLeft += reducePower;
+        UsableEventManager.current.onAction += shoot;
+        UsableEventManager.current.onUp += goUp;
+        UsableEventManager.current.onDown += goDown;
+        UsableEventManager.current.onRight += addPower;
+        UsableEventManager.current.onLeft += reducePower;
 
 
     }

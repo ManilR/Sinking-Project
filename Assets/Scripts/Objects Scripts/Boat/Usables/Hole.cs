@@ -18,7 +18,7 @@ public class Hole : MonoBehaviour
         objectID objectID = this.GetComponent<objectID>();
         ID = objectID.myID;
 
-        UsableEventManger.current.onAction += fix;
+        UsableEventManager.current.onAction += fix;
 
 
 

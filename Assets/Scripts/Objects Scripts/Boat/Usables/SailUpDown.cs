@@ -23,8 +23,8 @@ public class SailUpDown : MonoBehaviour
         objectID objectID = this.GetComponent<objectID>();
         ID = objectID.myID;
 
-        UsableEventManger.current.onUp += sailsUp;
-        UsableEventManger.current.onDown += sailsDown;
+        UsableEventManager.current.onUp += sailsUp;
+        UsableEventManager.current.onDown += sailsDown;
 
 
 
