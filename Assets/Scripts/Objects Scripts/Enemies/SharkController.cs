@@ -6,24 +6,35 @@ public class SharkController : MonoBehaviour
 {
     [SerializeField] private GameObject m_SharkHole;
     [SerializeField] public float m_Speed;
+    [SerializeField] public GameObject target;
+    private BoatMovement boatMovement;
+    private float targetSpeed;
     private SpriteRenderer m_SharkHoleSprite;
     private bool m_Swimming = true;
     private bool m_Attacking = false;
     private bool m_AttackIsDone = false;
     private float m_AttackDuration = 5;
 
+
     // Start is called before the first frame update
     void Start()
     {
         m_SharkHoleSprite = m_SharkHole.GetComponent<SpriteRenderer>();
         m_SharkHoleSprite.enabled = false;
+
+        boatMovement = target.GetComponent<BoatMovement>();
     }
 
     void proceedAttackOnBoat()
     {
-        if (m_Swimming)
+        if (m_Swimming && !m_Attacking)
         {
             var step = m_Speed * Time.deltaTime; // calculate distance to move
+            transform.position = Vector3.MoveTowards(transform.position, m_SharkHole.transform.position, step);
+        }
+        else
+        {
+            var step = boatMovement.movementSpeed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, m_SharkHole.transform.position, step);
         }
     }
@@ -65,9 +76,17 @@ public class SharkController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.name == "Boat" && m_Swimming)
+    //    {
+    //        biteBoatStructure();
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Boat" && m_Swimming)
+        if (collision.gameObject.tag == "Boat" && m_Swimming)
         {
             biteBoatStructure();
         }

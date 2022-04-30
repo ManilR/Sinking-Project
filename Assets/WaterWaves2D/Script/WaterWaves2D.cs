@@ -373,13 +373,16 @@ public class WaterWaves2D:MonoBehaviour{
 			closest=other.ClosestPoint(other.transform.position)
 		#else
 			closest=other.bounds.ClosestPoint(other.transform.position);
-		#endif
-		Impact(
+#endif
+		if (other.GetComponent<Rigidbody2D>() != null)
+        {
+			Impact(
 			closest,
 			(Vector2)other.bounds.extents,
 			other.GetComponent<Rigidbody2D>().velocity
 		);
-		PlayExitSound();
+			PlayExitSound();
+		}		
 	}
 
 	private void ScheduleImpact(Vector2 position,Vector2 size,Vector2 force,float delay){

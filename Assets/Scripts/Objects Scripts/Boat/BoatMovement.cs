@@ -6,7 +6,7 @@ public class BoatMovement : MonoBehaviour
 {
     private const float MAX_SPEED = 5;
     [SerializeField]
-    private float movementSpeed;
+    public float movementSpeed;
 
     [SerializeField]
     private LayerMask whatIsWater;

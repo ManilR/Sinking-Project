@@ -10,6 +10,7 @@ TagManager:
   - Hole
   - Canon Ball
   - Boat
+  - Enemy
   layers:
   - Default
   - TransparentFX

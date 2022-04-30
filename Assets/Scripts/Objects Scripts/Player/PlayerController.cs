@@ -267,49 +267,48 @@ public class PlayerController : MonoBehaviour
     private void ApplyMovement()
     {
         
-        if (isGrounded && !isOnSlope && !isJumping) //if not on slope
+        if (isGrounded && !isOnSlope && !isJumping && !isOnLadder) //if not on slope
         {
             Debug.Log("This one");
             newVelocity.Set(movementSpeed * xInput, 0.0f);
-            rb.velocity = newVelocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         }
-        else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
+        else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping && !isOnLadder) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
-            rb.velocity = newVelocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         }
         else if (!isGrounded) //If in air
         {
             newVelocity.Set(movementSpeed * xInput, rb.velocity.y);
-            rb.velocity = newVelocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         }
         if (isOnLadder && !isOnSlope && !isJumping) //if not on slope
         {
-            rb.gravityScale = 0;
+            //rb.gravityScale = 0;
             newVelocity.Set(movementSpeed * xInput, movementSpeed * yInput);
-            rb.velocity = newVelocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         }
         else
         {
             rb.gravityScale = baseGravityScale;
         }
 
+        rb.velocity = newVelocity;
+
         if (isOnBoat)
         {
             //Debug.Log("testBoat");
             rb.velocity = rb.velocity + rbBoat.velocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         }
 
         if (isActing)
         {
-            rb.velocity -= newVelocity;
-            animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+            rb.velocity = rbBoat.velocity;
+            
         }
+        animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
     }  
 
     private void Flip()
