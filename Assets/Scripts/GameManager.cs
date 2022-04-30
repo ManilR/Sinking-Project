@@ -1,9 +1,17 @@
 ﻿using UnityEngine;
+using System.Linq;
 using SDD.Events;
 
 public enum GAMESTATE { menu, play, pause, victory, gameover }
+
+
+
+
 public class GameManager : MonoBehaviour
 {
+    public string[] MainEvents = { "main_event_1", "main_event_2", "main_event_3" };
+    public string[] SmallEvents = { "small_event_1", "small_event_2", "small_event_3" };
+
     private static GameManager m_Instance;
 
     public static GameManager Instance
@@ -12,6 +20,9 @@ public class GameManager : MonoBehaviour
     }
 
     private GAMESTATE m_State;
+
+    private int IndexMainEvent = 0;
+    private int IndexSmallEvent = 0;
 
     public bool IsPlaying { get { return m_State == GAMESTATE.play; } }
 
@@ -52,22 +63,37 @@ public class GameManager : MonoBehaviour
         if (!m_Instance) m_Instance = this;
         else Destroy(this.gameObject);
         Time.timeScale = 0;
-    }
+        }
 
     private void OnEnable()
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
+        EventManager.Instance.AddListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
+        EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
+  
     }
 
     // Start is called before the first frame update
     void Start()
     {
         SetState(GAMESTATE.menu);
+    }
+
+    void NextMainEvent()
+    {
+        EventManager.Instance.Raise(new NewEventEvent() { EventName = MainEvents[IndexMainEvent] });
+        IndexMainEvent++;
+    }
+
+    void NextSmallEvent()
+    {
+        EventManager.Instance.Raise(new NewEventEvent(){ EventName = SmallEvents[IndexSmallEvent] });
+        IndexSmallEvent++;
     }
 
     private void FixedUpdate()
@@ -90,6 +116,23 @@ public class GameManager : MonoBehaviour
     void PlayButtonClickedEventCallback(PlayButtonClickedEvent e)
     {
         Play();
+        if (IndexMainEvent == 0) NextSmallEvent();
+        if (IndexMainEvent == 0) NextMainEvent();
     }
+
+    public void EventCompletedEventCallback(EventCompletedEvent e)
+    {
+        // Completed event is a Main one
+        if (MainEvents.Contains(e.EventName))
+        {
+            NextMainEvent();
+        }
+        // Completed event is a Small one
+        else
+        {
+            NextSmallEvent();
+        }
+    }
+
     #endregion
 }
