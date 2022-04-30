@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
     void Play()
     {
         Time.timeScale = 1;
@@ -58,13 +57,11 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.AddListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.RemoveListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
     }
 
     // Start is called before the first frame update
@@ -73,16 +70,26 @@ public class GameManager : MonoBehaviour
         SetState(GAMESTATE.menu);
     }
 
+    private void FixedUpdate()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+            if (IsPlaying)
+            {
+                Time.timeScale = 0;
+                SetState(GAMESTATE.pause);
+            }
+            else
+            {
+                Play();
+            }
+        }
+    }
     #region Events callbacks
 
     void PlayButtonClickedEventCallback(PlayButtonClickedEvent e)
     {
         Play();
-    }
-
-    void MainMenuButtonClickedEventCallback(MainMenuButtonClickedEvent e)
-    {
-        SetState(GAMESTATE.menu);
     }
     #endregion
 }

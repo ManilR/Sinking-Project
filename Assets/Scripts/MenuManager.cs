@@ -6,6 +6,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject m_MenuPanel;
+    [SerializeField] GameObject m_PausePanel;
 
     List<GameObject> m_Panels = new List<GameObject>();
 
@@ -21,19 +22,21 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Panels.AddRange(new GameObject[] { m_MenuPanel });
+        m_Panels.AddRange(new GameObject[] { m_MenuPanel, m_PausePanel });
     }
 
     private void OnEnable()
     {
         EventManager.Instance.AddListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.AddListener<GamePlayEvent>(GamePlayEventCallback);
+        EventManager.Instance.AddListener<GamePauseEvent>(GamePauseEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.RemoveListener<GamePlayEvent>(GamePlayEventCallback);
+        EventManager.Instance.RemoveListener<GamePauseEvent>(GamePauseEventCallback);
     }
 
     // Start is called before the first frame update
@@ -57,6 +60,11 @@ public class MenuManager : MonoBehaviour
     void GamePlayEventCallback(GamePlayEvent e)
     {
         OpenPanel(null);
+    }
+
+    void GamePauseEventCallback(GamePauseEvent e)
+    {
+        OpenPanel(m_PausePanel);
     }
 
     #endregion
