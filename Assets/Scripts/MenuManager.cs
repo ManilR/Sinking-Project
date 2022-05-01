@@ -7,6 +7,9 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject m_MenuPanel;
     [SerializeField] GameObject m_PausePanel;
+    [SerializeField] GameObject m_HudPanel;
+    [SerializeField] GameObject m_VictoryPanel;  // Not use for moment
+    [SerializeField] GameObject m_GameOverPanel; // Not use for moment
 
     List<GameObject> m_Panels = new List<GameObject>();
 
@@ -22,7 +25,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Panels.AddRange(new GameObject[] { m_MenuPanel, m_PausePanel });
+        m_Panels.AddRange(new GameObject[] { m_MenuPanel, m_PausePanel, m_HudPanel, m_VictoryPanel, m_GameOverPanel });
     }
 
     private void OnEnable()
@@ -59,7 +62,7 @@ public class MenuManager : MonoBehaviour
 
     void GamePlayEventCallback(GamePlayEvent e)
     {
-        OpenPanel(null);
+        OpenPanel(m_HudPanel);
     }
 
     void GamePauseEventCallback(GamePauseEvent e)
