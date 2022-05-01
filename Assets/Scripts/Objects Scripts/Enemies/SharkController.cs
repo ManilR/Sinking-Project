@@ -8,7 +8,6 @@ public class SharkController : MonoBehaviour
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject target;
     private BoatMovement boatMovement;
-    private float targetSpeed;
     private SpriteRenderer m_SharkHoleSprite;
     private bool m_Swimming = true;
     private bool m_Attacking = false;
@@ -41,8 +40,17 @@ public class SharkController : MonoBehaviour
 
     void biteBoatStructure()
     {
-        m_Attacking = true;
-        transform.Rotate(new Vector3(0, 0, 20));
+        if (!m_Attacking)
+        {
+            m_Attacking = true;
+            transform.Rotate(new Vector3(0, 0, 20));
+
+            Vector2 newVelocity = Vector2.zero;
+
+            var math = target.GetComponent<BoatMovement>().movementSpeed * target.GetComponent<BoatMovement>().movementSpeed * Mathf.Pow(10, -1) * -1;
+            newVelocity.Set(math, 0.0f); // a contrary force
+            this.GetComponent<Rigidbody2D>().velocity = newVelocity;
+        }
     }
 
 
@@ -66,7 +74,7 @@ public class SharkController : MonoBehaviour
                 transform.Rotate(new Vector3(0, 0, -20)); // rotate to the bottom
 
                 m_SharkHoleSprite.enabled = true; // show hole
-                Debug.Log("fin de l'attaque");
+               // Debug.Log("fin de l'attaque");
             }
         }
 
@@ -86,6 +94,7 @@ public class SharkController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+      //  Debug.Log(collision);
         if (collision.gameObject.tag == "Boat" && m_Swimming)
         {
             biteBoatStructure();
