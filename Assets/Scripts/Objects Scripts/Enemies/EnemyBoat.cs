@@ -19,6 +19,8 @@ public class EnemyBoat : MonoBehaviour
 
     private float health = 5;
     private float shootCD = 0;
+    private float pivotCD = 0;
+    private bool pivotUP = true;
 
     private Canon canonScript;
     private objectID canonID;
@@ -37,11 +39,22 @@ public class EnemyBoat : MonoBehaviour
     void Update()
     {
         shootCD += Time.time;
-        if(shootCD > 5000)
+        pivotCD += Time.time;
+        if(shootCD > 8000)
         {
             UsableEventManager.current.TriggerAction(canonID.myID);
             shootCD = 0;
         }
+        if(pivotCD > 3500)
+        {
+            pivotCD = 0;
+            pivotUP = !pivotUP;
+        }
+        if (pivotUP)
+            UsableEventManager.current.TriggerUp(canonID.myID);
+        else
+            UsableEventManager.current.TriggerDown(canonID.myID);
+
 
         movement();
         if (this.transform.rotation.eulerAngles.z < 1)
