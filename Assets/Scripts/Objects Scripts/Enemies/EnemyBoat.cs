@@ -41,7 +41,6 @@ public class EnemyBoat : MonoBehaviour
         shootCD += Time.deltaTime;
         pivotCD += Time.deltaTime;
 
-        Debug.Log(shootCD);
         if(shootCD > 8)
         {
             UsableEventManager.current.TriggerAction(canonID.myID);

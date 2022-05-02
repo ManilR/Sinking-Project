@@ -38,6 +38,7 @@ public class SailUpDown : MonoBehaviour
 
         if (isUsed)
         {
+            Debug.Log(sailSize);
             Sail1.transform.localScale = new Vector3(1, sailSize, 1);
             Sail2.transform.localScale = new Vector3(1, sailSize, 1);
         }
