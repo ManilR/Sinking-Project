@@ -12,7 +12,7 @@ public class SharkController : MonoBehaviour
     private bool m_Swimming = true;
     private bool m_Attacking = false;
     private bool m_AttackIsDone = false;
-    private float m_AttackDuration = 5;
+    [SerializeField] private float m_AttackDuration = 5;
 
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class SharkController : MonoBehaviour
 
             Vector2 newVelocity = Vector2.zero;
 
-            var math = target.GetComponent<BoatMovement>().movementSpeed * target.GetComponent<BoatMovement>().movementSpeed * Mathf.Pow(10, -1) * -1;
+            var math = boatMovement.movementSpeed * boatMovement.movementSpeed * Mathf.Pow(10, -1) * -1;
             newVelocity.Set(math, 0.0f); // a contrary force
             this.GetComponent<Rigidbody2D>().velocity = newVelocity;
         }
