@@ -11,6 +11,7 @@ TagManager:
   - Canon Ball
   - Boat
   - Enemy
+  - Hull
   layers:
   - Default
   - TransparentFX
