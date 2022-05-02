@@ -38,14 +38,16 @@ public class EnemyBoat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shootCD += Time.time;
-        pivotCD += Time.time;
-        if(shootCD > 8000)
+        shootCD += Time.deltaTime;
+        pivotCD += Time.deltaTime;
+
+        Debug.Log(shootCD);
+        if(shootCD > 8)
         {
             UsableEventManager.current.TriggerAction(canonID.myID);
             shootCD = 0;
         }
-        if(pivotCD > 3500)
+        if(pivotCD > 3.5)
         {
             pivotCD = 0;
             pivotUP = !pivotUP;

@@ -10,6 +10,9 @@ public class Hole : MonoBehaviour
     private bool isUsed;
 
     private float fixing = 0;
+
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +23,8 @@ public class Hole : MonoBehaviour
 
         UsableEventManager.current.onAction += fix;
 
-
-
+        boxCollider = gameObject.GetComponentInChildren<BoxCollider2D>();
+        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,12 @@ public class Hole : MonoBehaviour
         if (fixing < 0)
             fixing = 0;
 
-        
+        if(sprite.enabled == false)
+        {
+            boxCollider.enabled = false;
+        }
+        else
+            boxCollider.enabled = true;
 
 
     }
@@ -57,7 +65,9 @@ public class Hole : MonoBehaviour
             if (fixing >= 10f)
             {
                 Debug.Log("eo");
-                Destroy(gameObject);
+                this.GetComponentInParent<BoatDamage>().health++;
+                sprite.enabled = false;
+                fixing = 0;
             }
                 
         }
