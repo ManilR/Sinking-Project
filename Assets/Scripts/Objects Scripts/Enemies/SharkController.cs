@@ -9,15 +9,17 @@ public class SharkController : MonoBehaviour
     [SerializeField] public GameObject target;
     private BoatMovement boatMovement;
     private SpriteRenderer m_SharkHoleSprite;
-    private bool m_Swimming = true;
-    private bool m_Attacking = false;
-    private bool m_AttackIsDone = false;
+    private bool m_Swimming;
+    private bool m_Attacking;
+    private bool m_AttackIsDone;
     [SerializeField] private float m_AttackDuration = 5;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void StartEvent()
     {
+        m_Swimming = true;
+        m_Attacking = false;
+        m_AttackIsDone = false;
+
         m_SharkHoleSprite = m_SharkHole.GetComponent<SpriteRenderer>();
         m_SharkHoleSprite.enabled = false;
 

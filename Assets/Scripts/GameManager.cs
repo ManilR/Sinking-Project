@@ -4,13 +4,11 @@ using SDD.Events;
 
 public enum GAMESTATE { menu, play, pause, victory, gameover }
 
-
-
-
 public class GameManager : MonoBehaviour
-{
-    public string[] MainEvents = { "main_event_1", "main_event_2", "main_event_3" };
-    public string[] SmallEvents = { "small_event_1", "small_event_2", "small_event_3" };
+{   
+    // Watch out to Cache, change name of arrays to be sure to update their content
+    public string[] MainEventsArray = { "ENEMY_BOAT" };
+    public string[] SmallEventsArray = { "SHARK", "SEAGULL" };
 
     private static GameManager m_Instance;
 
@@ -86,14 +84,16 @@ public class GameManager : MonoBehaviour
 
     void NextMainEvent()
     {
-        EventManager.Instance.Raise(new NewEventEvent() { EventName = MainEvents[IndexMainEvent] });
+        EventManager.Instance.Raise(new NewEventEvent() { EventName = MainEventsArray[IndexMainEvent] });
         IndexMainEvent++;
+        IndexMainEvent %= MainEventsArray.Length;
     }
 
     void NextSmallEvent()
     {
-        EventManager.Instance.Raise(new NewEventEvent(){ EventName = SmallEvents[IndexSmallEvent] });
+        EventManager.Instance.Raise(new NewEventEvent(){ EventName = SmallEventsArray[IndexSmallEvent] });
         IndexSmallEvent++;
+        IndexSmallEvent %= SmallEventsArray.Length;
     }
 
     private void FixedUpdate()
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void EventCompletedEventCallback(EventCompletedEvent e)
     {
         // Completed event is a Main one
-        if (MainEvents.Contains(e.EventName))
+        if (MainEventsArray.Contains(e.EventName))
         {
             NextMainEvent();
         }

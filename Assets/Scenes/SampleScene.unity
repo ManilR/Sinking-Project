@@ -628,6 +628,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 6002762985572155557, guid: 71bbbd454e365504e88f1e5eaae90906,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6002762985572155577, guid: 71bbbd454e365504e88f1e5eaae90906,
         type: 3}
       propertyPath: m_IsTrigger
@@ -656,17 +661,17 @@ PrefabInstance:
     - target: {fileID: 6002762985572155579, guid: 71bbbd454e365504e88f1e5eaae90906,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6002762985572155579, guid: 71bbbd454e365504e88f1e5eaae90906,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9314871
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6002762985572155579, guid: 71bbbd454e365504e88f1e5eaae90906,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6002762985572155579, guid: 71bbbd454e365504e88f1e5eaae90906,
         type: 3}
@@ -748,14 +753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b782cb1d913b54ebf16df381d68102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainEvents:
-  - main_event_1
-  - main_event_2
-  - main_event_3
-  SmallEvents:
-  - small_event_1
-  - small_event_2
-  - small_event_3
+  MainEventsArray:
+  - ENEMY_BOAT
+  SmallEventsArray:
+  - SHARK
+  - SEAGULL
 --- !u!43 &768120274
 Mesh:
   m_ObjectHideFlags: 0
@@ -920,6 +922,36 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &786106650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 786106651}
+  m_Layer: 7
+  m_Name: SharkSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &786106651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786106650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35.7, y: -14.6, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1945871724}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789848510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,7 +2895,7 @@ PrefabInstance:
     - target: {fileID: 823118746971350355, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 892264638920021057, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
@@ -2918,7 +2950,7 @@ PrefabInstance:
     - target: {fileID: 1506472854380596237, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1513320187401112643, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
@@ -3982,6 +4014,7 @@ Transform:
   - {fileID: 1884680088}
   - {fileID: 685199892}
   - {fileID: 1862073606}
+  - {fileID: 1563692069}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4155,6 +4188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Seagull
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665794988289543990, guid: 188aa864d94287f42bffb529bae380ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 188aa864d94287f42bffb529bae380ad, type: 3}
@@ -4433,6 +4471,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1563692068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1563692069}
+  - component: {fileID: 1563692070}
+  m_Layer: 0
+  m_Name: GameEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1563692069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563692068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1151732898}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1563692070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563692068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c17794bc023a94295f9a7f44a92247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shark: {fileID: 832401011}
+  sharkSpawnerTransform: {fileID: 786106651}
 --- !u!1 &1568702022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6369501784259956594, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
@@ -4977,6 +5060,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6323600995194793053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1945871723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1945871724}
+  m_Layer: 7
+  m_Name: EventSpawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1945871724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945871723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 786106651}
+  m_Father: {fileID: 1829203612}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2002234765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5254,6 +5368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyBoat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808202166163085503, guid: 5cb246524eb87494b87fef28a4536829,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cb246524eb87494b87fef28a4536829, type: 3}
