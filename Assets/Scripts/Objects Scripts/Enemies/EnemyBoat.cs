@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using SDD.Events;
 using UnityEngine;
 
 public class EnemyBoat : MonoBehaviour
 {
+    static readonly string EventName = "ENEMY_BOAT";
+
     [SerializeField]
     public float movementSpeed;
     private Vector2 newVelocity;
@@ -24,15 +25,23 @@ public class EnemyBoat : MonoBehaviour
 
     private Canon canonScript;
     private objectID canonID;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        Physics2D.IgnoreCollision(GetComponentInChildren<BoxCollider2D>(), water.GetComponent<BoxCollider2D>());
+    }
+    public void StartEvent()
+    {
+        isOnPos = false;
+        health = 5;
+        shootCD = 0;
+        pivotCD = 0;
+        pivotUP = true;
         canonScript = GetComponentInChildren<Canon>();
         canonID = GetComponentInChildren<objectID>();
         rb = GetComponent<Rigidbody2D>();
         rbTarget = target.GetComponent<Rigidbody2D>();
-
-        Physics2D.IgnoreCollision(GetComponentInChildren<BoxCollider2D>(), water.GetComponent<BoxCollider2D>());
     }
 
     // Update is called once per frame
@@ -87,7 +96,9 @@ public class EnemyBoat : MonoBehaviour
         }
 
         if (health == 0)
-            Destroy(gameObject);
+        {
+            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
+        }  
     }
 
     private void movement()

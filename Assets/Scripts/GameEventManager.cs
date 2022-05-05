@@ -3,11 +3,20 @@ using UnityEngine;
 
 public class GameEventManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject enemyBoat;
+    [SerializeField]
+    private Transform enemyBoatTransform;
 
     [SerializeField]
     private GameObject shark;
     [SerializeField]
-    private Transform sharkSpawnerTransform;
+    private Transform sharkTransform;
+
+    [SerializeField]
+    private GameObject seagull;
+    [SerializeField]
+    private Transform seagullTransform;
 
     private void OnEnable()
     {
@@ -21,18 +30,12 @@ public class GameEventManager : MonoBehaviour
         EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         shark.SetActive(false);
+        seagull.SetActive(false);
+        enemyBoat.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     void NewEventEventCallback(NewEventEvent e)
     {
@@ -40,10 +43,22 @@ public class GameEventManager : MonoBehaviour
 
         switch (e.EventName)
         {
+            case "ENEMY_BOAT":
+                enemyBoat.SetActive(true);
+                enemyBoat.transform.position = enemyBoatTransform.position;
+                enemyBoat.GetComponent<EnemyBoat>().StartEvent();
+                break;
+
             case "SHARK":
                 shark.SetActive(true);
+                shark.transform.position = sharkTransform.position;
                 shark.GetComponent<SharkController>().StartEvent();
-                shark.transform.position = sharkSpawnerTransform.position;
+                break;
+
+            case "SEAGULL":
+                seagull.SetActive(true);
+                seagull.transform.position = seagullTransform.position;
+                seagull.GetComponent<SharkController>().StartEvent();
                 break;
 
             default:
@@ -59,8 +74,16 @@ public class GameEventManager : MonoBehaviour
 
         switch (e.EventName)
         {
+            case "ENEMY_BOAT":
+                enemyBoat.SetActive(false);
+                break;
+
             case "SHARK":
                 shark.SetActive(false);
+                break;
+
+            case "SEAGULL":
+                seagull.SetActive(false);
                 break;
 
             default:

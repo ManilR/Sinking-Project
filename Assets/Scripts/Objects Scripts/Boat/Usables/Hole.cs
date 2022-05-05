@@ -57,14 +57,11 @@ public class Hole : MonoBehaviour
 
     private void fix(int id)
     {
-        Debug.Log(id);
         if (id == this.ID)
         {
             fixing += 1;
-            Debug.Log(fixing);
             if (fixing >= 10f)
             {
-                Debug.Log("eo");
                 this.GetComponentInParent<BoatDamage>().health++;
                 sprite.enabled = false;
                 fixing = 0;

@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using SDD.Events;
 using UnityEngine;
 
 public class SeagullController : MonoBehaviour
 {
+    static readonly string EventName = "SEAGULL";
+
     [SerializeField] private GameObject m_SeagullHole;
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject m_Boat;
@@ -16,8 +17,12 @@ public class SeagullController : MonoBehaviour
     private bool m_AttackIsDone = false;
 
     // Start is called before the first frame update
-    void Start()
+    void StartEvent()
     {
+        m_Flying = true;
+        m_Attacking = false;
+        m_AttackIsDone = false;
+
         // Hide the hole by default
         m_SeagullHoleSprite = m_SeagullHole.GetComponent<SpriteRenderer>();
         m_SeagullHoleSprite.enabled = false;
@@ -37,6 +42,7 @@ public class SeagullController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 100, transform.position.y, transform.position.z), m_Speed * 2 * Time.deltaTime);
+            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
         }
     }
 
@@ -80,9 +86,6 @@ public class SeagullController : MonoBehaviour
             m_Flying = false;
             m_Attacking = true;
             //m_Speed = 1;
-
-            Debug.Log(transform.position);
-            Debug.Log(m_SeagullHole.transform.position);
 
             /*
 

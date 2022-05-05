@@ -1,9 +1,12 @@
+using SDD.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SharkController : MonoBehaviour
 {
+    static readonly string EventName = "SHARK";
+
     [SerializeField] private GameObject m_SharkHole;
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject target;
@@ -83,6 +86,7 @@ public class SharkController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 70, transform.position.y - 100, transform.position.z), m_Speed*2 * Time.deltaTime);
+            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
         }
     }
 
