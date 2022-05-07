@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 using SDD.Events;
+using System.Collections;
 
 public enum GAMESTATE { menu, play, pause, victory, gameover }
 
@@ -66,13 +67,11 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.AddListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
   
     }
 
@@ -111,27 +110,32 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    IEnumerator LaunchMainEvent()
+    {
+        while (true)
+        {
+            NextMainEvent();
+            yield return new WaitForSeconds(30);
+        }   
+    }
+
+    IEnumerator LaunchSmallEvent()
+    {
+        while (true)
+        {
+            NextSmallEvent();
+            yield return new WaitForSeconds(20);
+        }
+    }
+
     #region Events callbacks
 
     void PlayButtonClickedEventCallback(PlayButtonClickedEvent e)
     {
         Play();
-        if (IndexMainEvent == 0) NextSmallEvent();
-        if (IndexMainEvent == 0) NextMainEvent();
-    }
-
-    public void EventCompletedEventCallback(EventCompletedEvent e)
-    {
-        // Completed event is a Main one
-        if (MainEventsArray.Contains(e.EventName))
-        {
-            NextMainEvent();
-        }
-        // Completed event is a Small one
-        else
-        {
-            NextSmallEvent();
-        }
+        StartCoroutine(LaunchSmallEvent());
+        StartCoroutine(LaunchMainEvent());
     }
 
     #endregion

@@ -7,7 +7,7 @@ public class SharkController : MonoBehaviour
 {
     static readonly string EventName = "SHARK";
 
-    [SerializeField] private GameObject m_SharkHole;
+    [SerializeField] public GameObject m_SharkHole;
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject target;
     private BoatMovement boatMovement;
@@ -17,7 +17,7 @@ public class SharkController : MonoBehaviour
     private bool m_AttackIsDone;
     [SerializeField] private float m_AttackDuration = 5;
 
-    public void StartEvent()
+    void Start()
     {
         m_Swimming = true;
         m_Attacking = false;
@@ -86,7 +86,7 @@ public class SharkController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 70, transform.position.y - 100, transform.position.z), m_Speed*2 * Time.deltaTime);
-            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
+            Destroy(gameObject);
         }
     }
 

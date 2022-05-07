@@ -5,7 +5,7 @@ public class SeagullController : MonoBehaviour
 {
     static readonly string EventName = "SEAGULL";
 
-    [SerializeField] private GameObject m_SeagullHole;
+    [SerializeField] public GameObject m_SeagullHole;
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject m_Boat;
     [SerializeField] public float m_AttackDuration = 3;
@@ -17,7 +17,7 @@ public class SeagullController : MonoBehaviour
     private bool m_AttackIsDone = false;
 
     // Start is called before the first frame update
-    void StartEvent()
+    public void StartEvent()
     {
         m_Flying = true;
         m_Attacking = false;
@@ -42,7 +42,7 @@ public class SeagullController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 100, transform.position.y, transform.position.z), m_Speed * 2 * Time.deltaTime);
-            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
+            Destroy(gameObject);
         }
     }
 

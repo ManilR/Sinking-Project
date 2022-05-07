@@ -10,9 +10,9 @@ public class EnemyBoat : MonoBehaviour
     private Vector2 newVelocity;
 
     [SerializeField]
-    private GameObject target;
+    public GameObject target;
     [SerializeField]
-    private GameObject water;
+    public GameObject water;
     private Rigidbody2D rb;
     private Rigidbody2D rbTarget;
 
@@ -27,12 +27,9 @@ public class EnemyBoat : MonoBehaviour
     private objectID canonID;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
         Physics2D.IgnoreCollision(GetComponentInChildren<BoxCollider2D>(), water.GetComponent<BoxCollider2D>());
-    }
-    public void StartEvent()
-    {
         isOnPos = false;
         health = 5;
         shootCD = 0;
@@ -97,7 +94,7 @@ public class EnemyBoat : MonoBehaviour
 
         if (health == 0)
         {
-            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
+            Destroy(gameObject);
         }  
     }
 

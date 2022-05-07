@@ -3,25 +3,26 @@ using UnityEngine;
 
 public class GameEventManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject enemyBoat;
-    [SerializeField]
-    private Transform enemyBoatTransform;
+    [SerializeField] private GameObject enemyBoatPrefab;
+    [SerializeField] private GameObject enemyBoat;
+    [SerializeField] private GameObject waterWave2D;
+    [SerializeField] private Transform enemyBoatTransform;
 
-    [SerializeField]
-    private GameObject shark;
-    [SerializeField]
-    private Transform sharkTransform;
 
-    [SerializeField]
-    private GameObject seagull;
-    [SerializeField]
-    private Transform seagullTransform;
+
+    [SerializeField] private GameObject shark_prefab;
+    [SerializeField] private Transform sharkTransform;
+    [SerializeField] private GameObject m_SharkHole;
+    [SerializeField] private GameObject boat;
+
+    [SerializeField] private GameObject seagull_prefab;
+    [SerializeField] private GameObject seagull_hole;
+    [SerializeField] private Transform seagullTransform;
 
     private void OnEnable()
     {
         EventManager.Instance.AddListener<NewEventEvent>(NewEventEventCallback);
-        EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
+        EventManager.Instance.AddListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
 
     private void OnDisable()
@@ -32,9 +33,6 @@ public class GameEventManager : MonoBehaviour
 
     private void Start()
     {
-        shark.SetActive(false);
-        seagull.SetActive(false);
-        enemyBoat.SetActive(false);
     }
 
     void NewEventEventCallback(NewEventEvent e)
@@ -44,21 +42,21 @@ public class GameEventManager : MonoBehaviour
         switch (e.EventName)
         {
             case "ENEMY_BOAT":
-                enemyBoat.SetActive(true);
-                enemyBoat.transform.position = enemyBoatTransform.position;
-                enemyBoat.GetComponent<EnemyBoat>().StartEvent();
+                GameObject enemy_boat = Instantiate(enemyBoatPrefab, enemyBoatTransform.position, Quaternion.identity);
+                enemy_boat.GetComponent<EnemyBoat>().target = boat;
+                enemy_boat.GetComponent<EnemyBoat>().water = waterWave2D;
                 break;
 
             case "SHARK":
-                shark.SetActive(true);
-                shark.transform.position = sharkTransform.position;
-                shark.GetComponent<SharkController>().StartEvent();
+                GameObject shark = Instantiate(shark_prefab, sharkTransform.position, Quaternion.identity);
+                shark.GetComponent<SharkController>().m_SharkHole = m_SharkHole;
+                shark.GetComponent<SharkController>().target = boat;
                 break;
 
             case "SEAGULL":
-                seagull.SetActive(true);
-                seagull.transform.position = seagullTransform.position;
-                seagull.GetComponent<SharkController>().StartEvent();
+                GameObject seagull = Instantiate(seagull_prefab, seagullTransform.position, Quaternion.identity);
+                seagull.GetComponent<SeagullController>().m_SeagullHole = seagull_hole;
+                seagull.GetComponent<SeagullController>().m_Boat = boat;
                 break;
 
             default:
@@ -71,24 +69,5 @@ public class GameEventManager : MonoBehaviour
     void EventCompletedEventCallback(EventCompletedEvent e)
     {
         Debug.Log("Event completed : " + e.EventName);
-
-        switch (e.EventName)
-        {
-            case "ENEMY_BOAT":
-                enemyBoat.SetActive(false);
-                break;
-
-            case "SHARK":
-                shark.SetActive(false);
-                break;
-
-            case "SEAGULL":
-                seagull.SetActive(false);
-                break;
-
-            default:
-                Debug.Log("Unknown event");
-                break;
-        }
     }
 }
