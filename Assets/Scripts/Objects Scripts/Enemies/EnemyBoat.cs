@@ -26,6 +26,7 @@ public class EnemyBoat : MonoBehaviour
     private Canon canonScript;
     private objectID canonID;
 
+    public float movCD = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,13 +78,13 @@ public class EnemyBoat : MonoBehaviour
             isOnPos = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Boat")
-        {
-            isOnPos = false;
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Boat")
+    //    {
+    //        isOnPos = false;
+    //    }
+    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -100,6 +101,7 @@ public class EnemyBoat : MonoBehaviour
 
     private void movement()
     {
+        
         if (!isOnPos)
         {
             newVelocity.Set(movementSpeed * -1, 0.0f);
@@ -107,7 +109,14 @@ public class EnemyBoat : MonoBehaviour
         }
         else
         {
-            rb.velocity = rbTarget.velocity;
+            movCD += Time.deltaTime;
+            //rb.velocity = rbTarget.velocity;
+            if (movCD < 4f)
+                rb.velocity = new Vector2(0, 0);
+            else
+                rb.velocity = new Vector2(rbTarget.velocity.x * 1.25f, 0);
+            if (movCD > 8f)
+                movCD = 0;
         }
 
     }

@@ -12,15 +12,19 @@ public class BoatDamage : MonoBehaviour
     [SerializeField] private int MAX_HEALTH;
     public int health = 0;
 
+    private int nbHoles = 0;
+    private float damageTimer;
+    private float damageTic; // 1dmg/sec
     void Start()
     {
         health = MAX_HEALTH;
         foreach(Transform hole in HoleParent)
         {
-            if(hole.tag == "Hole")
+            if(hole.tag == "Hole" && hole.name != "SharkBite")
             {
                 hole.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 holes.Add(hole);
+                nbHoles++;
             }
             
         }
@@ -29,6 +33,21 @@ public class BoatDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damageTimer += Time.deltaTime;
+        damageTic += Time.deltaTime;
+
+        if(damageTic >= 1f)
+        {
+            damageTic = 0;
+            foreach (Transform hole in holes)
+            {
+                if (hole.GetComponentInChildren<SpriteRenderer>().enabled == true)
+                {
+                    health--;
+                }
+
+            }
+        }
         
     }
 
@@ -42,9 +61,28 @@ public class BoatDamage : MonoBehaviour
 
     private void HullDamage()
     {
-        health--;
-        int HolePos = Random.Range(0, 9);
-        holes[HolePos].GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+        if(damageTimer > 0.1)
+        {
+            damageTimer = 0;
+            health--;
+            int HolePos = Random.Range(0, nbHoles-1);
+            for (int i = 0; i < nbHoles; i++)
+            {
+                if (holes[HolePos].GetComponentInChildren<SpriteRenderer>().enabled == false)
+                {
+                    holes[HolePos].GetComponentInChildren<SpriteRenderer>().enabled = true;
+                    break;
+                }
+                if (HolePos == nbHoles -1)
+                    HolePos = 0;
+                else
+                    HolePos++;
+
+            }
+        }
+        
+        
     }
 
 }

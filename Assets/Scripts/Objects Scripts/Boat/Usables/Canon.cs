@@ -21,7 +21,8 @@ public class Canon : MonoBehaviour
     private Usable usableScript;
     private bool isUsed;
     
-    private float power = 15;
+    private float power = 25;
+    private float shootCD = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,7 @@ public class Canon : MonoBehaviour
     {
 
         isUsed = usableScript.isUsed;
-
+        shootCD += Time.deltaTime;
         if (isUsed)
         {
             Line.enabled = true;
@@ -80,7 +81,7 @@ public class Canon : MonoBehaviour
     private void shoot(int id)
     {
         
-        if(id == this.ID)
+        if(id == this.ID && shootCD > 3)
         {
             initialVelocity = (FirePoint.position - pivot.position) * power;
             // instantiate a cannon ball
@@ -89,6 +90,8 @@ public class Canon : MonoBehaviour
             // apply some force
             Rigidbody2D rb = cannonBall.GetComponent<Rigidbody2D>();
             rb.AddForce(initialVelocity, ForceMode2D.Impulse);
+
+            shootCD = 0;
         }
              
     }
@@ -120,7 +123,7 @@ public class Canon : MonoBehaviour
     {
         if (id == this.ID)
         {
-            if (power < 20)
+            if (power < 35)
             {
                 Debug.Log(power);
                 power += 0.03f;
