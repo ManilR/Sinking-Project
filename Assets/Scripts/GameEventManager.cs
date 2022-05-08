@@ -18,6 +18,7 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private GameObject seagull_prefab;
     [SerializeField] private GameObject seagull_hole;
     [SerializeField] private Transform seagullTransform;
+    [SerializeField] private Transform sail;
 
     private void OnEnable()
     {
@@ -57,6 +58,7 @@ public class GameEventManager : MonoBehaviour
                 GameObject seagull = Instantiate(seagull_prefab, seagullTransform.position, Quaternion.identity);
                 seagull.GetComponent<SeagullController>().m_SeagullHole = seagull_hole;
                 seagull.GetComponent<SeagullController>().m_Boat = boat;
+                seagull.GetComponent<SeagullController>().m_Sail = sail;
                 break;
 
             default:

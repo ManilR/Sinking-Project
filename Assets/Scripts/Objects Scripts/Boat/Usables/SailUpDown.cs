@@ -50,7 +50,7 @@ public class SailUpDown : MonoBehaviour
     {
         if (id == this.ID && sailSize > 0.1f)
         {
-            sailSize -= 0.002f;
+            sailSize -= 0.004f;
 
         }
 
@@ -59,7 +59,7 @@ public class SailUpDown : MonoBehaviour
     {
         if (id == this.ID && sailSize < 1)
         {
-            sailSize += 0.002f;
+            sailSize += 0.02f;
 
         }
 
