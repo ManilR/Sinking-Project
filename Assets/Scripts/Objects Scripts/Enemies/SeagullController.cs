@@ -9,7 +9,7 @@ public class SeagullController : MonoBehaviour
     [SerializeField] public float m_Speed;
     [SerializeField] public GameObject m_Boat;
     [SerializeField] public float m_AttackDuration = 3;
-    [SerializeField] public GameObject m_Sail;
+    [SerializeField] public Transform m_Sail;
 
     private SpriteRenderer m_SeagullHoleSprite;
     private BoatMovement m_BoatMovement;
