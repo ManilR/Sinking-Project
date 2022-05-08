@@ -12,6 +12,7 @@ TagManager:
   - Boat
   - Enemy
   - Hull
+  - End
   layers:
   - Default
   - TransparentFX

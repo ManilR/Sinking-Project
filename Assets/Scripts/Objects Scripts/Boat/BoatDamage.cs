@@ -1,3 +1,4 @@
+using SDD.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,8 @@ public class BoatDamage : MonoBehaviour
 
     private List<Transform> holes = new List<Transform>();
 
-    [SerializeField] private int MAX_HEALTH;
-    public int health = 0;
+    [SerializeField] public float MAX_HEALTH;
+    public float health = 0;
 
     private int nbHoles = 0;
     private float damageTimer;
@@ -48,7 +49,12 @@ public class BoatDamage : MonoBehaviour
 
             }
         }
-        
+
+        if (health <= 0)
+        {
+            EventManager.Instance.Raise(new NewEventEvent() { EventName = "GAMEOVER" });
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -86,7 +86,7 @@ public class SharkController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 70, transform.position.y - 100, transform.position.z), m_Speed*2 * Time.deltaTime);
-            Destroy(gameObject);
+            Destroy(gameObject, 3f);
         }
     }
 

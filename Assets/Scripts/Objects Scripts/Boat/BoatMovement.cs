@@ -1,3 +1,4 @@
+using SDD.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,5 +41,11 @@ public class BoatMovement : MonoBehaviour
             newVelocity.Set(movementSpeed, 0.0f);
             rb.velocity = newVelocity;
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "End")
+            EventManager.Instance.Raise(new NewEventEvent() { EventName = "VICTORY" });
     }
 }
