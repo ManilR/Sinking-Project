@@ -102,10 +102,14 @@ public class EnemyBoat : MonoBehaviour
     private void movement()
     {
         float speedY = 0;
-        if ((int)movCD % 2 == 0)
-            speedY = 1f;
-        else
-            speedY = -1f;
+        if (isOnPos)
+        {
+            if ((int)movCD % 2 == 0)
+                speedY = 1f;
+            else
+                speedY = -1f;
+        }
+        
         if (!isOnPos)
         {
             newVelocity.Set(movementSpeed * -1, speedY);
