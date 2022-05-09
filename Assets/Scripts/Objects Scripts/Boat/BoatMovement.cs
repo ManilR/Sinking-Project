@@ -7,6 +7,8 @@ public class BoatMovement : MonoBehaviour
 {
     private const float MAX_SPEED = 5;
     [SerializeField]
+    public float BASE_SPEED;
+
     public float movementSpeed;
 
     [SerializeField]
@@ -19,10 +21,14 @@ public class BoatMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private float timer;
+
+    [SerializeField]
+    private GameObject sailHole;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementSpeed = BASE_SPEED;
     }
 
     // Update is called once per frame
@@ -31,6 +37,11 @@ public class BoatMovement : MonoBehaviour
         timer += Time.deltaTime;
         checkMoving();
         movement();
+
+        if (sailHole.GetComponent<SpriteRenderer>().enabled == true)
+            movementSpeed = BASE_SPEED / 2;
+        else
+            movementSpeed = BASE_SPEED;
     }
     private void checkMoving()
     {
