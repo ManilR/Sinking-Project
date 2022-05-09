@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7957163701940400937}
   - component: {fileID: 7957163701940400936}
   - component: {fileID: 7957163701940400919}
-  m_Layer: 7
+  m_Layer: 1
   m_Name: Boat Hole
   m_TagString: Hole
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 1436906874434352775}
   - component: {fileID: 813204637715794025}
   - component: {fileID: 3241972887351876604}
-  m_Layer: 7
+  m_Layer: 1
   m_Name: HoleVisual
   m_TagString: Usable
   m_Icon: {fileID: 0}
