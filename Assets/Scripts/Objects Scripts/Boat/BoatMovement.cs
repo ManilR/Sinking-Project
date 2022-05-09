@@ -29,6 +29,9 @@ public class BoatMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         movementSpeed = BASE_SPEED;
+
+        // hide the seagull hole by default
+        sailHole.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     // Update is called once per frame
