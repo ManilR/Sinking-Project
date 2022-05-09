@@ -67,11 +67,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
+        EventManager.Instance.AddListener<GameOverEvent>(GameOverEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
+        EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
   
     }
 
@@ -136,6 +138,11 @@ public class GameManager : MonoBehaviour
         Play();
         StartCoroutine(LaunchSmallEvent());
         StartCoroutine(LaunchMainEvent());
+    }
+
+    void GameOverEventCallback(GameOverEvent e)
+    {
+        SetState(GAMESTATE.gameover);
     }
 
     #endregion

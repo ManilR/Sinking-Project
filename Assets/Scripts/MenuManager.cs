@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject m_PausePanel;
     [SerializeField] GameObject m_HudPanel;
     [SerializeField] GameObject m_VictoryPanel;  // Not use for moment
-    [SerializeField] GameObject m_GameOverPanel; // Not use for moment
+    [SerializeField] GameObject m_GameOverPanel;
 
     List<GameObject> m_Panels = new List<GameObject>();
 
@@ -33,6 +33,7 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.AddListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.AddListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.AddListener<GamePauseEvent>(GamePauseEventCallback);
+        EventManager.Instance.AddListener<GameOverEvent>(GameOverEventCallback);
     }
 
     private void OnDisable()
@@ -40,6 +41,7 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.RemoveListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.RemoveListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.RemoveListener<GamePauseEvent>(GamePauseEventCallback);
+        EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
     }
 
     // Start is called before the first frame update
@@ -68,6 +70,11 @@ public class MenuManager : MonoBehaviour
     void GamePauseEventCallback(GamePauseEvent e)
     {
         OpenPanel(m_PausePanel);
+    }
+
+    void GameOverEventCallback(GameOverEvent e)
+    {
+        OpenPanel(m_GameOverPanel);
     }
 
     #endregion
