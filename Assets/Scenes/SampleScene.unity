@@ -3436,11 +3436,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
-    - target: {fileID: 5187875279073017395, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e, type: 3}
 --- !u!1 &1092807847
