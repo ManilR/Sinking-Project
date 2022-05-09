@@ -24,6 +24,8 @@ public class BoatMovement : MonoBehaviour
 
     [SerializeField]
     private GameObject sailHole;
+    [SerializeField]
+    private Transform sail;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +43,10 @@ public class BoatMovement : MonoBehaviour
         checkMoving();
         movement();
 
+        movementSpeed = BASE_SPEED * sail.localScale.y;
+
         if (sailHole.GetComponent<SpriteRenderer>().enabled == true)
             movementSpeed = BASE_SPEED / 2;
-        else
-            movementSpeed = BASE_SPEED;
     }
     private void checkMoving()
     {

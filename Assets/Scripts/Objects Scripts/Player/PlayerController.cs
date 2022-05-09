@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject water;
 
+    [SerializeField]
+    private PhysicsMaterial2D material;
+
     private float xInput;
     private float yInput;
     private float slopeDownAngle;
@@ -266,6 +269,16 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
+        canWalkOnSlope = true;
+
+        //if (isOnSlope)
+        //{
+        //    boat.GetComponent<Rigidbody2D>().sharedMaterial = null;
+        //}
+        //else
+        //{
+        //    boat.GetComponent<Rigidbody2D>().sharedMaterial = material;
+        //}
         
         if (isGrounded && !isOnSlope && !isJumping && !isOnLadder) //if not on slope
         {
@@ -276,7 +289,7 @@ public class PlayerController : MonoBehaviour
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping && !isOnLadder) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
-
+            //boat.GetComponent<Rigidbody2D>().sharedMaterial.friction = 0;
         }
         else if (!isGrounded) //If in air
         {
@@ -294,20 +307,24 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravityScale;
         }
 
-        rb.velocity = newVelocity;
+        if (isActing)
+        {
+            newVelocity.Set(-0.75f, 0);
+
+        }
 
         if (isOnBoat)
         {
             //Debug.Log("testBoat");
-            rb.velocity = rb.velocity + rbBoat.velocity;
+            float newX = newVelocity.x + rbBoat.velocity.x;
+            float newY = newVelocity.y + rbBoat.velocity.y;
+            newVelocity.Set(newX, newY);
 
         }
 
-        if (isActing)
-        {
-            rb.velocity = rbBoat.velocity;
-            
-        }
+        
+
+        rb.velocity = newVelocity;
         animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
     }  
 
