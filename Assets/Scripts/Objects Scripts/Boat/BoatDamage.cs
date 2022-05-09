@@ -52,7 +52,7 @@ public class BoatDamage : MonoBehaviour
 
         if (health <= 0)
         {
-            EventManager.Instance.Raise(new GameOverEvent());
+            EventManager.Instance.Raise(new SetStateGameoverEvent());
         }
 
     }
