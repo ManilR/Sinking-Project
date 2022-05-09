@@ -59,4 +59,9 @@ public class EventCompletedEvent : SDD.Events.Event
 {
 	public string EventName { get; set; }
 }
+
+public class SetStateGameoverEvent : SDD.Events.Event
+{
+
+}
 #endregion

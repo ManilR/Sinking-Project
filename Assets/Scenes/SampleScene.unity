@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 883774388}
   - component: {fileID: 883774387}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: BackToMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1665,7 +1665,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1862073607}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayButtonClickedUICallback
+        m_MethodName: MenuButtonClickedUICallback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3997,6 +3997,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1829203610, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e, type: 3}
+      propertyPath: MAX_HEALTH
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 3633988895706214447, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_RootOrder
@@ -4804,7 +4808,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pause
+  m_Text: ~Pause~
 --- !u!222 &1750837181
 CanvasRenderer:
   m_ObjectHideFlags: 0

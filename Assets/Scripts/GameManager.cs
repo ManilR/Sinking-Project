@@ -67,13 +67,15 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.AddListener<GameOverEvent>(GameOverEventCallback);
+        EventManager.Instance.AddListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
+        EventManager.Instance.AddListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
-        EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
+        EventManager.Instance.RemoveListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
+        EventManager.Instance.RemoveListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
   
     }
 
@@ -140,9 +142,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LaunchMainEvent());
     }
 
-    void GameOverEventCallback(GameOverEvent e)
+    void SetStateGameoverEventCallback(SetStateGameoverEvent e)
     {
         SetState(GAMESTATE.gameover);
+        Time.timeScale = 0;
+    }
+
+    void MainMenuButtonClickedEventCallback(MainMenuButtonClickedEvent e)
+    {
+        SetState(GAMESTATE.menu);
     }
 
     #endregion
