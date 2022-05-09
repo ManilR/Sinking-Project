@@ -18,7 +18,7 @@ public class BoatMovement : MonoBehaviour
     private Vector2 newVelocity;
 
     private Rigidbody2D rb;
-
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +28,7 @@ public class BoatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         checkMoving();
         movement();
     }
@@ -37,9 +38,13 @@ public class BoatMovement : MonoBehaviour
     }
     private void movement()
     {
-        
-            newVelocity.Set(movementSpeed, 0.0f);
-            rb.velocity = newVelocity;
+        float speedY = 0;
+        if ((int)timer % 2 == 0)
+            speedY = 1;
+        else
+            speedY = -1;
+        newVelocity.Set(movementSpeed, speedY);
+        rb.velocity = newVelocity;
         
     }
 

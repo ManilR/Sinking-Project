@@ -24,8 +24,10 @@
 		{
 			if (!GameManager.Instance.IsPlaying) return;
 
+			this.transform.position = new Vector3(m_Target.position.x + 25, this.transform.position.y, this.transform.position.z);
 			// TO DO
 		}
+
 
 		protected override void GameMenu(GameMenuEvent e)
 		{
