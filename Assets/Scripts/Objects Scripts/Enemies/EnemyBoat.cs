@@ -76,7 +76,6 @@ public class EnemyBoat : MonoBehaviour
         if(collision.gameObject.tag == "Boat")
         {
             isOnPos = true;
-            movCD = 0;
         }
     }
     //private void OnTriggerExit2D(Collider2D collision)
@@ -102,23 +101,28 @@ public class EnemyBoat : MonoBehaviour
 
     private void movement()
     {
-        
+        float speedY = 0;
+        if ((int)movCD % 2 == 0)
+            speedY = 1f;
+        else
+            speedY = -1f;
         if (!isOnPos)
         {
-            newVelocity.Set(movementSpeed * -1, 0.0f);
-            rb.velocity = newVelocity;
+            newVelocity.Set(movementSpeed * -1, speedY);
+            
         }
         else
         {
             movCD += Time.deltaTime;
             //rb.velocity = rbTarget.velocity;
             if (movCD < 4f)
-                rb.velocity = new Vector2(rbTarget.velocity.x * 0f, 0);
+                newVelocity.Set(rbTarget.velocity.x * 0f, speedY);
             else
-                rb.velocity = new Vector2(rbTarget.velocity.x * 1.25f, 0);
+                newVelocity.Set(rbTarget.velocity.x * 1.25f, speedY);
             if (movCD > 8f)
                 movCD = 0;
         }
+        rb.velocity = newVelocity;
 
     }
 }
