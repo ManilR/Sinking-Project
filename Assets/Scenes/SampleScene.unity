@@ -4078,6 +4078,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e, type: 3}
+--- !u!4 &1080617395 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1545300856, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080617394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1092807847
 GameObject:
   m_ObjectHideFlags: 0
@@ -5605,6 +5611,16 @@ PrefabInstance:
       propertyPath: m_Boat
       value: 
       objectReference: {fileID: 1829203609}
+    - target: {fileID: 129396429691698707, guid: 5b404be74b7b95c4e9d6ee9aa68d4f16,
+        type: 3}
+      propertyPath: m_Sail
+      value: 
+      objectReference: {fileID: 1080617395}
+    - target: {fileID: 129396429691698707, guid: 5b404be74b7b95c4e9d6ee9aa68d4f16,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1576527684}
     - target: {fileID: 129396429691698707, guid: 5b404be74b7b95c4e9d6ee9aa68d4f16,
         type: 3}
       propertyPath: m_SeagullHole
