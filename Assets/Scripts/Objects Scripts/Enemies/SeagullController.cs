@@ -17,6 +17,16 @@ public class SeagullController : MonoBehaviour
     private bool m_Attacking = false;
     private bool m_AttackIsDone = false;
 
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -104,5 +114,10 @@ public class SeagullController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        Destroy(gameObject);
     }
 }

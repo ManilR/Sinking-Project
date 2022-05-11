@@ -81,9 +81,14 @@ public class MenuManager : MonoBehaviour
 
     #region UI events callbacks
 
-    public void PlayButtonClickedUICallback()
+    public void PlayButtonFromMenuClickedUICallback()
     {
-        EventManager.Instance.Raise(new PlayButtonClickedEvent());
+        EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = true });
+    }
+
+    public void PlayButtonFromPauseClickedUICallback()
+    {
+        EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = false });
     }
 
     public void MenuButtonClickedUICallback()

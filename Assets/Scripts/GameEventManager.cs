@@ -8,8 +8,6 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private GameObject waterWave2D;
     [SerializeField] private Transform enemyBoatTransform;
 
-
-
     [SerializeField] private GameObject shark_prefab;
     [SerializeField] private Transform sharkTransform;
     [SerializeField] private GameObject m_SharkHole;
@@ -31,7 +29,6 @@ public class GameEventManager : MonoBehaviour
         EventManager.Instance.RemoveListener<NewEventEvent>(NewEventEventCallback);
         EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
-
     private void Start()
     {
     }

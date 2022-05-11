@@ -27,6 +27,17 @@ public class EnemyBoat : MonoBehaviour
     private objectID canonID;
 
     public float movCD = 0;
+
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,6 +138,10 @@ public class EnemyBoat : MonoBehaviour
                 movCD = 0;
         }
         rb.velocity = newVelocity;
+    }
 
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        Destroy(gameObject);
     }
 }

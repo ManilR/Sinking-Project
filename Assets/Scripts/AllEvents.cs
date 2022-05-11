@@ -37,6 +37,7 @@ public class EscapeButtonClickedEvent : SDD.Events.Event
 }
 public class PlayButtonClickedEvent : SDD.Events.Event
 {
+	public bool fromMenu { get; set; }
 }
 public class ResumeButtonClickedEvent : SDD.Events.Event
 {
@@ -61,6 +62,11 @@ public class EventCompletedEvent : SDD.Events.Event
 }
 
 public class SetStateGameoverEvent : SDD.Events.Event
+{
+
+}
+
+public class ResetMapEvent : SDD.Events.Event
 {
 
 }

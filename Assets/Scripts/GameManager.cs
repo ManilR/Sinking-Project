@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         {
             case GAMESTATE.menu:
                 EventManager.Instance.Raise(new GameMenuEvent());
+                EventManager.Instance.Raise(new ResetMapEvent());
                 break;
             case GAMESTATE.play:
                 EventManager.Instance.Raise(new GamePlayEvent());
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.AddListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
         EventManager.Instance.AddListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
     private void OnDisable()
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
         EventManager.Instance.RemoveListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
-  
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
     // Start is called before the first frame update
@@ -138,8 +140,11 @@ public class GameManager : MonoBehaviour
     void PlayButtonClickedEventCallback(PlayButtonClickedEvent e)
     {
         Play();
-        StartCoroutine(LaunchSmallEvent());
-        StartCoroutine(LaunchMainEvent());
+        if (e.fromMenu)
+        {
+            StartCoroutine(LaunchSmallEvent());
+            StartCoroutine(LaunchMainEvent());
+        }
     }
 
     void SetStateGameoverEventCallback(SetStateGameoverEvent e)
@@ -153,5 +158,10 @@ public class GameManager : MonoBehaviour
         SetState(GAMESTATE.menu);
     }
 
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        IndexSmallEvent = 0;
+        IndexMainEvent = 0;
+    }
     #endregion
 }

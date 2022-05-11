@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SDD.Events;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -68,6 +69,18 @@ public class PlayerController : MonoBehaviour
     private Usable usableScript;
 
     public Animator animator;
+
+    private Vector3 initPos;
+
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+    }
 
     private void Start()
     {
@@ -226,7 +239,6 @@ public class PlayerController : MonoBehaviour
         {
             isOnSlope = false;
         }
-
     }
 
     private void SlopeCheckVertical(Vector2 checkPos)
@@ -235,7 +247,6 @@ public class PlayerController : MonoBehaviour
 
         if (hit)
         {
-
             slopeNormalPerp = Vector2.Perpendicular(hit.normal).normalized;            
 
             slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
@@ -249,7 +260,6 @@ public class PlayerController : MonoBehaviour
            
             Debug.DrawRay(hit.point, slopeNormalPerp, Color.blue);
             Debug.DrawRay(hit.point, hit.normal, Color.green);
-
         }
 
     }
@@ -300,7 +310,6 @@ public class PlayerController : MonoBehaviour
         {
             //rb.gravityScale = 0;
             newVelocity.Set(movementSpeed * xInput, movementSpeed * yInput);
-
         }
         else
         {
@@ -310,7 +319,6 @@ public class PlayerController : MonoBehaviour
         if (isActing)
         {
             newVelocity.Set(-0.75f, 0);
-
         }
 
         if (isOnBoat)
@@ -319,11 +327,7 @@ public class PlayerController : MonoBehaviour
             float newX = newVelocity.x + rbBoat.velocity.x;
             float newY = newVelocity.y + rbBoat.velocity.y;
             newVelocity.Set(newX, newY);
-
         }
-
-        
-
         rb.velocity = newVelocity;
         animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
     }  
@@ -339,5 +343,16 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        if (initPos != Vector3.zero)
+        {
+            rb.transform.position = initPos;
+        }
+        else
+        {
+            initPos = rb.transform.position;
+        }
+    }
 }
 

@@ -17,6 +17,16 @@ public class SharkController : MonoBehaviour
     private bool m_AttackIsDone;
     [SerializeField] private float m_AttackDuration = 5;
 
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
     void Start()
     {
         m_Swimming = true;
@@ -105,5 +115,9 @@ public class SharkController : MonoBehaviour
         {
             biteBoatStructure();
         }
+    }
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        Destroy(gameObject);
     }
 }

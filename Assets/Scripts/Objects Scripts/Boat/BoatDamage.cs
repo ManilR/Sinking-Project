@@ -16,6 +16,17 @@ public class BoatDamage : MonoBehaviour
     private int nbHoles = 0;
     private float damageTimer;
     private float damageTic; // 1dmg/sec
+
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
     void Start()
     {
         health = MAX_HEALTH;
@@ -46,7 +57,6 @@ public class BoatDamage : MonoBehaviour
                 {
                     health--;
                 }
-
             }
         }
 
@@ -67,7 +77,6 @@ public class BoatDamage : MonoBehaviour
 
     private void HullDamage()
     {
-
         if(damageTimer > 0.1)
         {
             damageTimer = 0;
@@ -84,11 +93,14 @@ public class BoatDamage : MonoBehaviour
                     HolePos = 0;
                 else
                     HolePos++;
-
             }
         }
-        
-        
     }
 
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        health = MAX_HEALTH;
+        nbHoles = 0;
+        holes.ForEach((h) => h.GetComponentInChildren<SpriteRenderer>().enabled = false);
+    }
 }

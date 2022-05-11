@@ -1,6 +1,4 @@
 using SDD.Events;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatMovement : MonoBehaviour
@@ -26,14 +24,17 @@ public class BoatMovement : MonoBehaviour
     private GameObject sailHole;
     [SerializeField]
     private Transform sail;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        movementSpeed = BASE_SPEED;
 
-        // hide the seagull hole by default
-        sailHole.GetComponent<SpriteRenderer>().enabled = false;
+    private Vector3 initPos;
+
+    private void OnEnable()
+    {
+        EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
     // Update is called once per frame
@@ -68,5 +69,22 @@ public class BoatMovement : MonoBehaviour
     {
         if(collision.gameObject.tag == "End")
             EventManager.Instance.Raise(new NewEventEvent() { EventName = "VICTORY" });
+    }
+
+    void ResetMapEventCallback(ResetMapEvent e)
+    {
+        rb = GetComponent<Rigidbody2D>();
+        movementSpeed = BASE_SPEED;
+
+        if(initPos != Vector3.zero)
+        {
+            rb.transform.position = initPos;
+        }
+        else
+        {
+            initPos = rb.transform.position;
+        }
+        // hide the seagull hole by default
+        sailHole.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
