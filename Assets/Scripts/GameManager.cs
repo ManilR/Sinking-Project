@@ -3,7 +3,7 @@ using System.Linq;
 using SDD.Events;
 using System.Collections;
 
-public enum GAMESTATE { menu, play, pause, victory, gameover }
+public enum GAMESTATE { menu, play, pause, victory, gameover, credits, controls }
 
 public class GameManager : MonoBehaviour
 {   
@@ -46,6 +46,12 @@ public class GameManager : MonoBehaviour
             case GAMESTATE.gameover:
                 EventManager.Instance.Raise(new GameOverEvent());
                 break;
+            case GAMESTATE.credits:
+                EventManager.Instance.Raise(new CreditsEvent());
+                break;
+            case GAMESTATE.controls:
+                EventManager.Instance.Raise(new ControlsEvent());
+                break;
             default:
                 break;
         }
@@ -70,6 +76,8 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.AddListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
         EventManager.Instance.AddListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
+        EventManager.Instance.AddListener<ControlsButtonClickedEvent>(ControlsButtonClickedEventCallback);
+        EventManager.Instance.AddListener<CreditsButtonClickedEvent>(CreditsButtonClickedEventCallback);
         EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
@@ -78,6 +86,8 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
         EventManager.Instance.RemoveListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
+        EventManager.Instance.RemoveListener<ControlsButtonClickedEvent>(ControlsButtonClickedEventCallback);
+        EventManager.Instance.RemoveListener<CreditsButtonClickedEvent>(CreditsButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
@@ -156,6 +166,16 @@ public class GameManager : MonoBehaviour
     void MainMenuButtonClickedEventCallback(MainMenuButtonClickedEvent e)
     {
         SetState(GAMESTATE.menu);
+    }
+
+    void ControlsButtonClickedEventCallback(ControlsButtonClickedEvent e)
+    {
+        SetState(GAMESTATE.controls);
+    }
+
+    void CreditsButtonClickedEventCallback(CreditsButtonClickedEvent e)
+    {
+        SetState(GAMESTATE.credits);
     }
 
     void ResetMapEventCallback(ResetMapEvent e)

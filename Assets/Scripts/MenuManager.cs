@@ -8,8 +8,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject m_MenuPanel;
     [SerializeField] GameObject m_PausePanel;
     [SerializeField] GameObject m_HudPanel;
-    [SerializeField] GameObject m_VictoryPanel;  // Not use for moment
+    [SerializeField] GameObject m_VictoryPanel;
     [SerializeField] GameObject m_GameOverPanel;
+    [SerializeField] GameObject m_CreditsPanel;
+    [SerializeField] GameObject m_ControlsPanel;
 
     List<GameObject> m_Panels = new List<GameObject>();
 
@@ -25,7 +27,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        m_Panels.AddRange(new GameObject[] { m_MenuPanel, m_PausePanel, m_HudPanel, m_VictoryPanel, m_GameOverPanel });
+        m_Panels.AddRange(new GameObject[] { m_MenuPanel, m_PausePanel, m_HudPanel, m_VictoryPanel, m_GameOverPanel, m_ControlsPanel, m_CreditsPanel });
     }
 
     private void OnEnable()
@@ -34,6 +36,8 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.AddListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.AddListener<GamePauseEvent>(GamePauseEventCallback);
         EventManager.Instance.AddListener<GameOverEvent>(GameOverEventCallback);
+        EventManager.Instance.AddListener<CreditsEvent>(CreditsEventCallback);
+        EventManager.Instance.AddListener<ControlsEvent>(ControlsEventCallback);
     }
 
     private void OnDisable()
@@ -42,6 +46,8 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.RemoveListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.RemoveListener<GamePauseEvent>(GamePauseEventCallback);
         EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
+        EventManager.Instance.RemoveListener<CreditsEvent>(CreditsEventCallback);
+        EventManager.Instance.RemoveListener<ControlsEvent>(ControlsEventCallback);
     }
 
     // Start is called before the first frame update
@@ -77,6 +83,15 @@ public class MenuManager : MonoBehaviour
         OpenPanel(m_GameOverPanel);
     }
 
+    void CreditsEventCallback(CreditsEvent e)
+    {
+        OpenPanel(m_CreditsPanel);
+    }
+
+    void ControlsEventCallback(ControlsEvent e)
+    {
+        OpenPanel(m_ControlsPanel);
+    }
     #endregion
 
     #region UI events callbacks
@@ -94,6 +109,14 @@ public class MenuManager : MonoBehaviour
     public void MenuButtonClickedUICallback()
     {
         EventManager.Instance.Raise(new MainMenuButtonClickedEvent());
+    }
+    public void ControlsButtonClickedUICallback()
+    {
+        EventManager.Instance.Raise(new ControlsButtonClickedEvent());
+    }
+    public void CreditsButtonClickedUICallback()
+    {
+        EventManager.Instance.Raise(new CreditsButtonClickedEvent());
     }
     #endregion
 }

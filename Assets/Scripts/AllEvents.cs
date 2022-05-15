@@ -22,6 +22,15 @@ public class GameOverEvent : SDD.Events.Event
 public class GameVictoryEvent : SDD.Events.Event
 {
 }
+public class CreditsEvent : SDD.Events.Event
+{
+}
+
+public class ControlsEvent : SDD.Events.Event
+{
+}
+
+
 
 public class GameStatisticsChangedEvent : SDD.Events.Event
 {
@@ -43,6 +52,14 @@ public class ResumeButtonClickedEvent : SDD.Events.Event
 {
 }
 public class MainMenuButtonClickedEvent : SDD.Events.Event
+{
+}
+
+public class ControlsButtonClickedEvent : SDD.Events.Event
+{
+}
+
+public class CreditsButtonClickedEvent : SDD.Events.Event
 {
 }
 
