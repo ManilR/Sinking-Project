@@ -10,7 +10,7 @@ public class CanonBall : MonoBehaviour
     {
         Destroy(gameObject, 10);
         collider = gameObject.GetComponent<CircleCollider2D>();
-        collider.isTrigger = true;
+        //collider.isTrigger = true;
         
     }
 

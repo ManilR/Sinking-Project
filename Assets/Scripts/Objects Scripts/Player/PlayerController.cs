@@ -316,10 +316,10 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravityScale;
         }
 
-        if (isActing)
-        {
-            newVelocity.Set(-0.75f, 0);
-        }
+        //if (isActing)
+        //{
+        //    newVelocity.Set(-0.75f, 0);
+        //}
 
         if (isOnBoat)
         {
@@ -330,6 +330,11 @@ public class PlayerController : MonoBehaviour
         }
         rb.velocity = newVelocity;
         animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
+        if (isActing)
+        {
+            this.transform.position = new Vector2( usable.transform.position.x, this.transform.position.y);
+        }
     }  
 
     private void Flip()
