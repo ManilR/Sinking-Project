@@ -32,7 +32,7 @@ public class BoatDamage : MonoBehaviour
         health = MAX_HEALTH;
         foreach(Transform hole in HoleParent)
         {
-            if(hole.tag == "Hole" && hole.name != "SharkBite")
+            if(hole.name != "SharkBite")
             {
                 hole.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 holes.Add(hole);
@@ -80,7 +80,6 @@ public class BoatDamage : MonoBehaviour
         if(damageTimer > 0.1)
         {
             damageTimer = 0;
-            health--;
             int HolePos = Random.Range(0, nbHoles-1);
             for (int i = 0; i < nbHoles; i++)
             {
@@ -100,7 +99,6 @@ public class BoatDamage : MonoBehaviour
     void ResetMapEventCallback(ResetMapEvent e)
     {
         health = MAX_HEALTH;
-        nbHoles = 0;
         holes.ForEach((h) => h.GetComponentInChildren<SpriteRenderer>().enabled = false);
     }
 }
