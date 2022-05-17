@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827706412788490031}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 3.3400002, y: -2.1779, z: -1.5}
+  m_LocalPosition: {x: 3.3400002, y: -2.1779, z: -0.5}
   m_LocalScale: {x: 1.1999999, y: 1.1999999, z: 1}
   m_Children: []
   m_Father: {fileID: 4800783676552008340}
@@ -41,8 +41,8 @@ PositionConstraint:
   m_GameObject: {fileID: 827706412788490031}
   m_Enabled: 1
   m_Weight: 1
-  m_TranslationAtRest: {x: 3.3400002, y: -2.1779, z: -1.5}
-  m_TranslationOffset: {x: 1, y: 1, z: 0}
+  m_TranslationAtRest: {x: 3.3400002, y: -2.1779, z: -0.5}
+  m_TranslationOffset: {x: 1, y: 1, z: -0.5}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -127,8 +127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220887876788185093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.56, y: -0.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.4108, y: -0.31, z: 0}
+  m_LocalScale: {x: 1.012, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4800783676552008340}
   m_RootOrder: 1
@@ -292,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3324044683499943563}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 10.29, y: 1.6300001, z: -1.5}
+  m_LocalPosition: {x: 10.29, y: 1.6300001, z: -0.5}
   m_LocalScale: {x: 1.1999999, y: 1.1999998, z: 1}
   m_Children: []
   m_Father: {fileID: 4800783676552008340}
@@ -307,7 +307,7 @@ PositionConstraint:
   m_GameObject: {fileID: 3324044683499943563}
   m_Enabled: 1
   m_Weight: 1
-  m_TranslationAtRest: {x: 10.29, y: 1.6300001, z: -1.5}
+  m_TranslationAtRest: {x: 10.29, y: 1.6300001, z: -0.5}
   m_TranslationOffset: {x: 1, y: 1, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
@@ -1159,7 +1159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816922711450528675}
-  - component: {fileID: 7672754489540355910}
   - component: {fileID: 4921503971499155152}
   m_Layer: 8
   m_Name: Ladder1
@@ -1176,31 +1175,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7069831939484430726}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.7, y: 1.25, z: -1.5}
+  m_LocalPosition: {x: -0.7, y: 1.25, z: -0.5}
   m_LocalScale: {x: 1.1999999, y: 1.1999999, z: 1}
   m_Children: []
   m_Father: {fileID: 4800783676552008340}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!1818360608 &7672754489540355910
-PositionConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7069831939484430726}
-  m_Enabled: 1
-  m_Weight: 1
-  m_TranslationAtRest: {x: -0.7, y: 1.25, z: -1.5}
-  m_TranslationOffset: {x: 1, y: 1, z: 0}
-  m_AffectTranslationX: 1
-  m_AffectTranslationY: 1
-  m_AffectTranslationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 0
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
 --- !u!212 &4921503971499155152
 SpriteRenderer:
   m_ObjectHideFlags: 0
