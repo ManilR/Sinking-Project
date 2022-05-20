@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             NextMainEvent();
-            yield return new WaitForSeconds(30);
+            yield return new WaitForSeconds(33);
         }   
     }
 
@@ -153,10 +153,14 @@ public class GameManager : MonoBehaviour
         if (e.fromMenu)
         {
             StartCoroutine(LaunchSmallEvent());
-            StartCoroutine(LaunchMainEvent());
+            Invoke(nameof(LaunchMainEventWithOffset), 6);
         }
     }
 
+    void LaunchMainEventWithOffset()
+    {
+        StartCoroutine(LaunchMainEvent());
+    }
     void SetStateGameoverEventCallback(SetStateGameoverEvent e)
     {
         SetState(GAMESTATE.gameover);
