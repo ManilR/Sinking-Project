@@ -5,6 +5,6 @@ obj
 UserSettings
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj
+.vs
 .vsconfig
-.vs/Sinking-Project/v16/.suo
 *.vsidx
