@@ -46,14 +46,14 @@ public class OctopusController : MonoBehaviour
         if (m_IsApproaching)
         {
             transform.position = Vector3.MoveTowards(transform.position, m_HangingPoint.transform.position, m_Speed * Time.deltaTime);
-            Debug.Log("move towards");
+            // Debug.Log("move towards");
         }
 
         if (Vector2.Distance(transform.position, m_HangingPoint.transform.position) < 2f)
         {
             // fix position
             m_Attacking = true;
-            Debug.Log("attaque pieuvre");
+            // Debug.Log("attaque pieuvre");
         }
      
     }
