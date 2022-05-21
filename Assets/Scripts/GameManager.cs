@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     {
         EventManager.Instance.AddListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.AddListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
+        EventManager.Instance.AddListener<SetStateVictoryEvent>(SetStateVictoryEventCallback);
         EventManager.Instance.AddListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
         EventManager.Instance.AddListener<ControlsButtonClickedEvent>(ControlsButtonClickedEventCallback);
         EventManager.Instance.AddListener<CreditsButtonClickedEvent>(CreditsButtonClickedEventCallback);
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         EventManager.Instance.RemoveListener<PlayButtonClickedEvent>(PlayButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<SetStateGameoverEvent>(SetStateGameoverEventCallback);
+        EventManager.Instance.RemoveListener<SetStateVictoryEvent>(SetStateVictoryEventCallback);
         EventManager.Instance.RemoveListener<MainMenuButtonClickedEvent>(MainMenuButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<ControlsButtonClickedEvent>(ControlsButtonClickedEventCallback);
         EventManager.Instance.RemoveListener<CreditsButtonClickedEvent>(CreditsButtonClickedEventCallback);
@@ -164,6 +166,12 @@ public class GameManager : MonoBehaviour
     void SetStateGameoverEventCallback(SetStateGameoverEvent e)
     {
         SetState(GAMESTATE.gameover);
+        Time.timeScale = 0;
+    }
+
+    void SetStateVictoryEventCallback(SetStateVictoryEvent e)
+    {
+        SetState(GAMESTATE.victory);
         Time.timeScale = 0;
     }
 

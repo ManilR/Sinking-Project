@@ -83,6 +83,11 @@ public class SetStateGameoverEvent : SDD.Events.Event
 
 }
 
+public class SetStateVictoryEvent : SDD.Events.Event
+{
+
+}
+
 public class ResetMapEvent : SDD.Events.Event
 {
 

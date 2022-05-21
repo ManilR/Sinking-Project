@@ -68,7 +68,7 @@ public class BoatMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "End")
-            EventManager.Instance.Raise(new NewEventEvent() { EventName = "VICTORY" });
+            EventManager.Instance.Raise(new SetStateVictoryEvent());
     }
 
     void ResetMapEventCallback(ResetMapEvent e)

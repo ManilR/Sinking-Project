@@ -34,6 +34,7 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.AddListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.AddListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.AddListener<GamePauseEvent>(GamePauseEventCallback);
+        EventManager.Instance.AddListener<GameVictoryEvent>(GameVictoryEventCallback);
         EventManager.Instance.AddListener<GameOverEvent>(GameOverEventCallback);
         EventManager.Instance.AddListener<CreditsEvent>(CreditsEventCallback);
         EventManager.Instance.AddListener<ControlsEvent>(ControlsEventCallback);
@@ -44,6 +45,7 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.RemoveListener<GameMenuEvent>(GameMenuEventCallback);
         EventManager.Instance.RemoveListener<GamePlayEvent>(GamePlayEventCallback);
         EventManager.Instance.RemoveListener<GamePauseEvent>(GamePauseEventCallback);
+        EventManager.Instance.RemoveListener<GameVictoryEvent>(GameVictoryEventCallback);
         EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
         EventManager.Instance.RemoveListener<CreditsEvent>(CreditsEventCallback);
         EventManager.Instance.RemoveListener<ControlsEvent>(ControlsEventCallback);
@@ -75,6 +77,11 @@ public class MenuManager : MonoBehaviour
     void GamePauseEventCallback(GamePauseEvent e)
     {
         OpenPanel(m_PausePanel);
+    }
+
+    void GameVictoryEventCallback(GameVictoryEvent e)
+    {
+        OpenPanel(m_VictoryPanel);
     }
 
     void GameOverEventCallback(GameOverEvent e)
