@@ -8,3 +8,5 @@ Assembly-CSharp.csproj
 .vs
 .vsconfig
 *.vsidx
+*.csproj
+!Assembly-CSharp.csproj
