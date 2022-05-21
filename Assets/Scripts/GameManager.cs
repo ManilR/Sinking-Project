@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     // Watch out to Cache, change name of arrays to be sure to update their content
     public string[] MainEventsArray = { "ENEMY_BOAT" };
     public string[] SmallEventsArray = { "SHARK", "SEAGULL", "OCTOPUS" };
+    [SerializeField] private GameObject scorePanel;
 
     private static GameManager m_Instance;
 
@@ -176,8 +177,22 @@ public class GameManager : MonoBehaviour
 
     void SetStateVictoryEventCallback(SetStateVictoryEvent e)
     {
+        SetHighScore();
         SetState(GAMESTATE.victory);
         Time.timeScale = 0;
+    }
+
+    private void SetHighScore()
+    {
+        int score = (int)scorePanel.GetComponent<ScoreHUD>().gameScore;
+        int highscore = 0;
+        highscore = PlayerPrefs.GetInt("highscore", highscore);
+        if (score > highscore)
+        {
+            highscore = score;
+
+            PlayerPrefs.SetInt("highscore", highscore);
+        }
     }
 
     void MainMenuButtonClickedEventCallback(MainMenuButtonClickedEvent e)

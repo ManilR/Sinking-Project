@@ -22,6 +22,8 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private Transform octopusTransform;
     [SerializeField] private GameObject octopus_hanging_point;
 
+    [SerializeField] private GameObject scorePanel;
+
     private bool isEnemyBoat = false;
 
     private void OnEnable()
@@ -88,5 +90,6 @@ public class GameEventManager : MonoBehaviour
         {
             isEnemyBoat = false;
         }
+        scorePanel.GetComponent<ScoreHUD>().gameScore += 500;
     }
 }
