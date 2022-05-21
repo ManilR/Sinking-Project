@@ -13,7 +13,7 @@ public class NewEventDescriptionHUD : MonoBehaviour
         { "ENEMY_BOAT", "Captain !\nAn enemy boat is approaching ! Attack it with canons" },
         { "SHARK", "Captain !\n A shark is bitting our boat, repair the hole" },
         {"SEAGULL", "Captain !\n A Seagull is attacking our sails, repairs them !" },
-        {"OCTOPUS", "Captain !\n Be aware that an octopus is on its way to block us from accessing the other side of the boat!" }
+        {"OCTOPUS", "Captain !\n Be aware that an octopus is on its way to block us from accessing to the front!" }
     };
 
     private Text text;

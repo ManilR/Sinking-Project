@@ -18,10 +18,12 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private Transform seagullTransform;
     [SerializeField] private Transform sail;
 
-    private bool isEnemyBoat = false;
     [SerializeField] private GameObject octopus_prefab;
+    [SerializeField] private Transform octopusTransform;
     [SerializeField] private GameObject octopus_hanging_point;
-    
+
+    private bool isEnemyBoat = false;
+
     private void OnEnable()
     {
         EventManager.Instance.AddListener<NewEventEvent>(NewEventEventCallback);
@@ -67,7 +69,7 @@ public class GameEventManager : MonoBehaviour
                 seagull.GetComponent<SeagullController>().m_Sail = sail;
                 break;
             case "OCTOPUS":
-                GameObject octopus = Instantiate(octopus_prefab, seagullTransform.position, Quaternion.identity);
+                GameObject octopus = Instantiate(octopus_prefab, octopusTransform.position, Quaternion.identity);
                 octopus.GetComponent<OctopusController>().m_HangingPoint = octopus_hanging_point;
                 octopus.GetComponent<OctopusController>().m_Boat = boat;
                 break;

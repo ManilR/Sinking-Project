@@ -1441,6 +1441,7 @@ MonoBehaviour:
   MainEventsArray:
   - ENEMY_BOAT
   SmallEventsArray:
+  - OCTOPUS
   - SHARK
   - SEAGULL
 --- !u!1 &702414149
@@ -5264,6 +5265,26 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7287955357953084505, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287955357953084505, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287955357953084505, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563522397006472503, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14
+      objectReference: {fileID: 0}
     - target: {fileID: 8302024151731982519, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_TranslationOffset.x
@@ -5286,6 +5307,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e, type: 3}
+--- !u!1 &1080617395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082997954742058499, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080617394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1080617396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7563522397006472503, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080617394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1092807847
 GameObject:
   m_ObjectHideFlags: 0
@@ -6745,8 +6778,10 @@ MonoBehaviour:
   seagull_hole: {fileID: 1568702022}
   seagullTransform: {fileID: 965273812}
   sail: {fileID: 2015069733}
-  octopus_prefab: {fileID: 0}
-  octopus_hanging_point: {fileID: 0}
+  octopus_prefab: {fileID: 7327173420741777276, guid: 2b17d0004f505d04bb67b12f1a01e587,
+    type: 3}
+  octopusTransform: {fileID: 1080617396}
+  octopus_hanging_point: {fileID: 1080617395}
 --- !u!1 &1568702022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6369501784259956594, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
