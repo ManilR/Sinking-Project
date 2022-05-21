@@ -99,6 +99,11 @@ public class GameManager : MonoBehaviour
         SetState(GAMESTATE.menu);
     }
 
+    public void CloseApplication()
+    {
+        Application.Quit();
+    }
+
     void NextMainEvent()
     {
         EventManager.Instance.Raise(new NewEventEvent() { EventName = MainEventsArray[IndexMainEvent] });

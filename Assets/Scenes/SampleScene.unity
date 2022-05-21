@@ -2194,9 +2194,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1862073607}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayButtonFromMenuClickedUICallback
+      - m_Target: {fileID: 685199893}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CloseApplication
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

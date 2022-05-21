@@ -18,6 +18,7 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private Transform seagullTransform;
     [SerializeField] private Transform sail;
 
+    private bool isEnemyBoat = false;
     private void OnEnable()
     {
         EventManager.Instance.AddListener<NewEventEvent>(NewEventEventCallback);
@@ -40,9 +41,14 @@ public class GameEventManager : MonoBehaviour
         switch (e.EventName)
         {
             case "ENEMY_BOAT":
+                if(isEnemyBoat)
+                {
+                    break;
+                }
                 GameObject enemy_boat = Instantiate(enemyBoatPrefab, enemyBoatTransform.position, Quaternion.identity);
                 enemy_boat.GetComponent<EnemyBoat>().target = boat;
                 enemy_boat.GetComponent<EnemyBoat>().water = waterWave2D;
+                isEnemyBoat = true;
                 break;
 
             case "SHARK":
@@ -68,5 +74,9 @@ public class GameEventManager : MonoBehaviour
     void EventCompletedEventCallback(EventCompletedEvent e)
     {
         Debug.Log("Event completed : " + e.EventName);
+        if(e.EventName == "ENEMY_BOAT")
+        {
+            isEnemyBoat = false;
+        }
     }
 }

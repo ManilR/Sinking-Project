@@ -104,8 +104,9 @@ public class EnemyBoat : MonoBehaviour
             health--;
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
+            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
             Destroy(gameObject);
         }  
     }
