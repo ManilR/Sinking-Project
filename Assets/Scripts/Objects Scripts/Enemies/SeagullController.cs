@@ -10,7 +10,6 @@ public class SeagullController : MonoBehaviour
     [SerializeField] public GameObject m_Boat;
     [SerializeField] public float m_AttackDuration = 3;
     [SerializeField] public Transform m_Sail;
-    [SerializeField] public Camera m_Camera;
 
     private SpriteRenderer m_SeagullHoleSprite;
     private bool m_Flying = true;
@@ -51,12 +50,6 @@ public class SeagullController : MonoBehaviour
         if (m_AttackIsDone)
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 100, transform.position.y, transform.position.z), m_Speed * 2 * Time.deltaTime);
-            
-            /*Plane[] planes = GeometryUtility.CalculateFrustumPlanes(m_Camera);
-            if (GeometryUtility.TestPlanesAABB(planes, this.GetComponent<Collider2D>().bounds)) {
-                Destroy(gameObject);
-            }*/
-        
         }
     }
 

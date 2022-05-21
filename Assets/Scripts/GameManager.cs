@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {   
     // Watch out to Cache, change name of arrays to be sure to update their content
     public string[] MainEventsArray = { "ENEMY_BOAT" };
-    public string[] SmallEventsArray = { "SHARK", "SEAGULL" };
+    public string[] SmallEventsArray = { "SHARK", "SEAGULL", "OCTOPUS" };
 
     private static GameManager m_Instance;
 

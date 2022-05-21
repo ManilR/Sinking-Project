@@ -6745,6 +6745,8 @@ MonoBehaviour:
   seagull_hole: {fileID: 1568702022}
   seagullTransform: {fileID: 965273812}
   sail: {fileID: 2015069733}
+  octopus_prefab: {fileID: 0}
+  octopus_hanging_point: {fileID: 0}
 --- !u!1 &1568702022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6369501784259956594, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
