@@ -34,7 +34,7 @@ public class SharkController : MonoBehaviour
         m_AttackIsDone = false;
 
         m_SharkHoleSprite = m_SharkHole.GetComponent<SpriteRenderer>();
-        m_SharkHoleSprite.enabled = false;
+        //m_SharkHoleSprite.enabled = false;
 
         boatMovement = target.GetComponent<BoatMovement>();
     }
