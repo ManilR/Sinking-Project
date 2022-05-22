@@ -8,7 +8,7 @@ Sinking is a 2D game developped with Unity during our ESIEE game development cou
 
 
 It's a single PC multiplayer game, to play you can use : 
-- Keyboard : ZQSD + Directionnal arrows
+- Keyboard : ZQSD + Directional arrows
 - Controllers : Connect them before launching the game.
 
 ![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/Screenshot_Sinking_1.png?raw=true)
