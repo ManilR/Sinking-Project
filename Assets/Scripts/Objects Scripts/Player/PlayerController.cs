@@ -321,6 +321,8 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = baseGravityScale;
         }
 
+        animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
+
         //if (isActing)
         //{
         //    newVelocity.Set(-0.75f, 0);
@@ -334,7 +336,6 @@ public class PlayerController : MonoBehaviour
             newVelocity.Set(newX, newY);
         }
         rb.velocity = newVelocity;
-        animator.SetFloat("Speed", Mathf.Abs(newVelocity.x));
 
         if (isActing)
         {
