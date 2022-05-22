@@ -535,7 +535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Developper
+  m_Text: 'Developer
 
 '
 --- !u!222 &100092086
@@ -2642,7 +2642,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Timoth\xE9e Lefevre\n"
+  m_Text: "Timoth\xE9e Lefebvre\n"
 --- !u!222 &733096761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8769,7 +8769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Graphist
+  m_Text: Designer
 --- !u!222 &1477784163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9728,7 +9728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Developper
+  m_Text: 'Developer
 
 '
 --- !u!222 &1741315600
@@ -11098,7 +11098,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Developper
+  m_Text: 'Developer
 
 '
 --- !u!222 &2054610093

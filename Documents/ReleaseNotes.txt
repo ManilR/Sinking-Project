@@ -20,6 +20,20 @@ Vous pouvez utiliser soit le clavier soit des manettes de consoles
     - Sauter / Tirer  : Xbox : A, Playstation : X 
     - Interagir : Xbox : X, Playsation : Carré
     
+  
+Canon 
+  - Intéragir : Touche d'action
+  - Viser : Déplacement vertical
+  - Puissance : Déplacement horizontal
+
+Voile 
+  - Intéragir : Touche d'action
+  - Monter/Descendre : Déplacement vertical
+
+Trous 
+  - Intéragir : Touche d'action
+  - Boucher : Intéragir une fois puis appuyer plusieurs fois la touche de saut 
+
 --------------------------------------------------------------------
 Conditions de victoire / défaite
 --------------------------------------------------------------------
@@ -53,7 +67,7 @@ Pour ce qui est des voies d'améliorations nous pourrions ajouter dans le futur 
 - La possibilité d'améliorer le bateau au fur et à mesure des parties, de meilleurs canons, un bateau personnalisable.
 - Personnalisation des apparences des joueurs.
 - Aborder les bateaux ennemis.
-- Décors du jeu évolutif.
+- Décors du jeu évolutifs.
 
 --------------------------------------------------------------------
 Répartition des rôles 
