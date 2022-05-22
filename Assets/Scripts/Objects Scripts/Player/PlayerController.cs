@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
     [SerializeField]
     private int id ;
     [SerializeField]
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     private Vector3 initPos;
+    #endregion
 
     private void OnEnable()
     {
@@ -111,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInput()
     {
-        xInput = Input.GetAxisRaw("Horizontal_"+id);
+        xInput = Input.GetAxisRaw("Horizontal_"+id); // Get axis input depending on Player id
 
         yInput = Input.GetAxisRaw("Vertical_" + id);
 

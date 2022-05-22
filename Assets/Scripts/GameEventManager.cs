@@ -1,30 +1,37 @@
 using SDD.Events;
 using UnityEngine;
 
+// Handles game events launched by GameManager.cs
 public class GameEventManager : MonoBehaviour
 {
+    #region Enemies variables
+    // Enemy boat
     [SerializeField] private GameObject enemyBoatPrefab;
     [SerializeField] private GameObject enemyBoat;
     [SerializeField] private GameObject waterWave2D;
     [SerializeField] private Transform enemyBoatTransform;
+    private bool isEnemyBoat = false;
 
+    // Shark
     [SerializeField] private GameObject shark_prefab;
     [SerializeField] private Transform sharkTransform;
     [SerializeField] private GameObject m_SharkHole;
     [SerializeField] private GameObject boat;
 
+    // Seagull
     [SerializeField] private GameObject seagull_prefab;
     [SerializeField] private GameObject seagull_hole;
     [SerializeField] private Transform seagullTransform;
     [SerializeField] private Transform sail;
 
+    // Octopus
     [SerializeField] private GameObject octopus_prefab;
     [SerializeField] private Transform octopusTransform;
     [SerializeField] private GameObject octopus_hanging_point;
 
-    [SerializeField] private GameObject scorePanel;
+    #endregion
 
-    private bool isEnemyBoat = false;
+    [SerializeField] private GameObject scorePanel;
 
     private void OnEnable()
     {
@@ -37,14 +44,11 @@ public class GameEventManager : MonoBehaviour
         EventManager.Instance.RemoveListener<NewEventEvent>(NewEventEventCallback);
         EventManager.Instance.RemoveListener<EventCompletedEvent>(EventCompletedEventCallback);
     }
-    private void Start()
-    {
-    }
 
+    // Callback of event "new event" launched 
+    // Instantiate prefab on their transform spawner
     void NewEventEventCallback(NewEventEvent e)
     {
-        Debug.Log("New event launched : " + e.EventName);
-
         switch (e.EventName)
         {
             case "ENEMY_BOAT":
@@ -80,12 +84,11 @@ public class GameEventManager : MonoBehaviour
                 Debug.Log("Unknown event");
                 break;
         }
-
     }
 
+    // Add bonus when enemy boat is sinked
     void EventCompletedEventCallback(EventCompletedEvent e)
     {
-        Debug.Log("Event completed : " + e.EventName);
         if(e.EventName == "ENEMY_BOAT")
         {
             isEnemyBoat = false;

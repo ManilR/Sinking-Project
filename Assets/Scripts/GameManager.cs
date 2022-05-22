@@ -5,9 +5,9 @@ using System.Collections;
 
 public enum GAMESTATE { menu, play, pause, victory, gameover, credits, controls }
 
+// Main manager class, handle game state, launch game events
 public class GameManager : MonoBehaviour
 {   
-    // Watch out to Cache, change name of arrays to be sure to update their content
     public string[] MainEventsArray = { "ENEMY_BOAT" };
     public string[] SmallEventsArray = { "SHARK", "SEAGULL", "OCTOPUS" };
     [SerializeField] private GameObject scorePanel;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         SetState(GAMESTATE.menu);
@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    // Launch next main event, loop on array
     void NextMainEvent()
     {
         EventManager.Instance.Raise(new NewEventEvent() { EventName = MainEventsArray[IndexMainEvent] });
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         IndexMainEvent %= MainEventsArray.Length;
     }
 
+    // Launch next small event 
     void NextSmallEvent()
     {
         EventManager.Instance.Raise(new NewEventEvent(){ EventName = SmallEventsArray[IndexSmallEvent] });

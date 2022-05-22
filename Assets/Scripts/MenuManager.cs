@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Handles game panels
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject m_MenuPanel;
@@ -49,18 +50,6 @@ public class MenuManager : MonoBehaviour
         EventManager.Instance.RemoveListener<GameOverEvent>(GameOverEventCallback);
         EventManager.Instance.RemoveListener<CreditsEvent>(CreditsEventCallback);
         EventManager.Instance.RemoveListener<ControlsEvent>(ControlsEventCallback);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     #region GameManager events callbacks

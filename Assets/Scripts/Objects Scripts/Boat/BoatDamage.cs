@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BoatDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]private Transform HoleParent;
 
     private List<Transform> holes = new List<Transform>();
