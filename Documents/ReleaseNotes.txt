@@ -53,15 +53,15 @@ Pour ce qui est des voies d'améliorations nous pourrions ajouter dans le futur 
 - La possibilité d'améliorer le bateau au fur et à mesure des parties, de meilleurs canons, un bateau personnalisable.
 - Personnalisation des apparences des joueurs.
 - Aborder les bateaux ennemis.
-- Fond du jeu évolutif.
+- Décors du jeu évolutif.
 
 --------------------------------------------------------------------
 Répartition des rôles 
 --------------------------------------------------------------------
 Développeurs : 
-Manil Richard : Mouvement du bateau, éléments du bateau("Usables"), interactions joueurs / usables, événements bateau ennemi.
+Manil Richard : Mouvement du bateau, éléments du bateau("Usables"), interactions joueurs / usables, événements bateau ennemi et Octopus, Score.
 Timothée Lefebvre : Evenements Shark, Seagull et Octopus.
-Killian Pelletier : Contrôles des joueurs (clavier/manettes), gestion des événements du jeu et des panneaux du jeu.
+Killian Pelletier : Contrôles des joueurs (clavier/manettes), gestion des événements du jeu et des menus/HUD du jeu.
 
 Graphistes / designer
 Louis Prevost : Création / Recherche de tous les éléments du jeu, son, particules et logo.
