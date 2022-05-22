@@ -33,6 +33,15 @@ public class Hole : MonoBehaviour
 
         isUsed = usableScript.isUsed;
 
+        if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled)
+        {
+            gameObject.GetComponentInChildren<ParticleSystem>().Play();
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+        }
+
         if (isUsed)
         {
         }
