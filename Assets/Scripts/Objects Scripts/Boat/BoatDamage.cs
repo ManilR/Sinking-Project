@@ -53,7 +53,7 @@ public class BoatDamage : MonoBehaviour
         if(damageTic >= 1f)
         {
             damageTic = 0;
-            foreach (Transform hole in holes)
+            foreach (Transform hole in HoleParent)
             {
                 if (hole.GetComponentInChildren<SpriteRenderer>().enabled == true)
                 {
