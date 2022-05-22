@@ -6818,19 +6818,19 @@ MonoBehaviour:
     loop: 0
   - name: MenuMusic
     clip: {fileID: 8300000, guid: c4a5e69931e5a91459ea99b24acb3623, type: 3}
-    volume: 0.05
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: PlayingMusic
     clip: {fileID: 8300000, guid: 91dc2ed447863224e908269521fc4c2e, type: 3}
-    volume: 0.05
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: PlayingAmbiant
     clip: {fileID: 8300000, guid: 54beb46163a922e42be61478d11c89b1, type: 3}
-    volume: 0.05
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}
     loop: 1
