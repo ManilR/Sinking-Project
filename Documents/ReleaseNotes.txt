@@ -40,6 +40,18 @@ Ils peuvent reboucher les trous causés par les ennemis (requin, mouette et bate
 Remarques 
 --------------------------------------------------------------------
 
+En ce qui concerne les limitations et bug du jeu, nous avons identifiés les points suivants : 
+
+- Mouvement non voulu des joueurs vers la proue du bateau, les joueurs glissent mais nous ne pouvons pas mettre d'adhérence aux matériaux car cela empêcherait les joueurs de gravir les pentes.
+- Mouvements plus fluides / réalistes des ennemis.
+
+Pour ce qui est des voies d'améliorations nous pourrions ajouter dans le futur ces éléments : 
+
+- De nouveaux événements de jeu, comme un mode tempête, pluie de poissons, écopage.
+- La possibilité d'améliorer le bateau au fur et à mesure des parties, de meilleurs canons, un bateau personnalisable.
+- Personnalisation des apparences des joueurs.
+- Aborder les bateaux ennemis.
+
 --------------------------------------------------------------------
 Répartition des rôles 
 --------------------------------------------------------------------
