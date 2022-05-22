@@ -16,7 +16,10 @@ public class Hole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+        if(gameObject.name.Contains("Hole 1"))
+            gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+
+
         usableScript = this.GetComponent<Usable>();
 
         objectID objectID = this.GetComponent<objectID>();
@@ -31,17 +34,20 @@ public class Hole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        isUsed = usableScript.isUsed;
-
-        if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isStopped)
+        if (gameObject.name.Contains("Hole 1"))
         {
-            gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            isUsed = usableScript.isUsed;
+
+            if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isStopped)
+            {
+                gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            }
+            if (!gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isPlaying)
+            {
+                gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+            }
         }
-        if(!gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isPlaying)
-        {
-            gameObject.GetComponentInChildren<ParticleSystem>().Stop();
-        }
+        
 
         if (isUsed)
         {
