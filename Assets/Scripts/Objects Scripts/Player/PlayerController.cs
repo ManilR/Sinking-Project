@@ -339,7 +339,8 @@ public class PlayerController : MonoBehaviour
 
         if (isActing)
         {
-            this.transform.position = new Vector2( usable.transform.position.x, this.transform.position.y);
+            if(usable !=null)
+                this.transform.position = new Vector2( usable.transform.position.x, this.transform.position.y);
         }
     }  
 
