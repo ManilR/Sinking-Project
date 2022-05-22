@@ -1,0 +1,56 @@
+Bienvenue sur Sinking !
+
+--------------------------------------------------------------------
+Contrôles
+--------------------------------------------------------------------
+Vous pouvez utiliser soit le clavier soit des manettes de consoles
+
+  Clavier : 
+      - Joueur 1
+                - Diriger : ZQSD
+                - Sauter / Tirer: Espace
+                - Interagir : E
+      - Joueur 2 
+                - Diriger : Flèches directionnelles
+                - Sauter / Tirer : Pavé numérique 0
+                - Interagir : Pavé numérique +
+
+  Manettes : 
+    - Diriger : Joystick gauche
+    - Sauter / Tirer  : Xbox : A, Playstation : X 
+    - Interagir : Xbox : X, Playsation : Carré
+    
+--------------------------------------------------------------------
+Conditions de victoire / défaite
+--------------------------------------------------------------------
+
+Victoire : Le bateau atteint la fin de la map
+Défaite : Le bateau n'a plus de points de vie 
+
+--------------------------------------------------------------------
+Capacités des joueurs
+--------------------------------------------------------------------
+
+Les joueurs peuvent se déplacer et sauter sur le bateau, ainsi que monter et descendre les échelles.
+Ils peuvent interagir avec les canons pour les orienter et tirer.
+Ils peuvent monter et descendre la voile, cela a un effet sur la vitesse de bateau.
+Ils peuvent reboucher les trous causés par les ennemis (requin, mouette et bateau ennemi).
+
+--------------------------------------------------------------------
+Remarques 
+--------------------------------------------------------------------
+
+--------------------------------------------------------------------
+Répartition des rôles 
+--------------------------------------------------------------------
+Développeurs : 
+Manil Richard : Mouvement du bateau, interactions joueurs / environnement, événements bateau ennemi.
+Timothée Lefebvre : Evenements Shark, Seagull et Octopus.
+Killian Pelletier : Contrôles des joueurs (clavier/manettes), gestion des événements du jeu et des panneaux du jeu.
+
+Graphistes / designer
+Louis Prevost : Design de tous les éléments du jeu, son et logo.
+
+--------------------------------------------------------------------
+Origine des assets
+--------------------------------------------------------------------
