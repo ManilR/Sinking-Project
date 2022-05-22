@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour
         if (e.fromMenu)
         {
             gameLevelCoef = GameManager.GameLevelCoefs[e.levelIndex];
+            EventManager.Instance.Raise(new GameLevelEvent() { levelCoef = gameLevelCoef });
             StartCoroutine(LaunchSmallEvent());
             Invoke(nameof(LaunchMainEventWithOffset), 6);
         }

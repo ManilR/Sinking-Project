@@ -10,7 +10,7 @@ public class BoatDamage : MonoBehaviour
     private List<Transform> holes = new List<Transform>();
 
     [SerializeField] public float MAX_HEALTH;
-    public float initHealth = 0;
+    public float initHealth;
     public float health = 0;
 
     private int nbHoles = 0;
@@ -20,18 +20,18 @@ public class BoatDamage : MonoBehaviour
     private void OnEnable()
     {
         EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
+        EventManager.Instance.AddListener<GameLevelEvent>(GameLevelEventCallback);
     }
 
     private void OnDisable()
     {
         EventManager.Instance.RemoveListener<ResetMapEvent>(ResetMapEventCallback);
+        EventManager.Instance.RemoveListener<GameLevelEvent>(GameLevelEventCallback);
     }
 
     void Start()
     {
-        initHealth = MAX_HEALTH;
-        initHealth *= GameManager.Instance.gameLevelCoef;
-        health = initHealth;
+        
         foreach(Transform hole in HoleParent)
         {
             if(hole.name != "SharkBite")
@@ -42,6 +42,13 @@ public class BoatDamage : MonoBehaviour
             }
             
         }
+    }
+
+    void GameLevelEventCallback(GameLevelEvent e)
+    {
+        initHealth = MAX_HEALTH;
+        initHealth *= e.levelCoef;
+        health = initHealth;
     }
 
     // Update is called once per frame
