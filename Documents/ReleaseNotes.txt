@@ -53,6 +53,7 @@ Pour ce qui est des voies d'améliorations nous pourrions ajouter dans le futur 
 - La possibilité d'améliorer le bateau au fur et à mesure des parties, de meilleurs canons, un bateau personnalisable.
 - Personnalisation des apparences des joueurs.
 - Aborder les bateaux ennemis.
+- Fond du jeu évolutif.
 
 --------------------------------------------------------------------
 Répartition des rôles 
