@@ -20,6 +20,8 @@ public class OctopusController : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D rbBoat;
 
+    private float test = 0;
+
     [SerializeField] public float health = 60;
 
     private void OnEnable()
