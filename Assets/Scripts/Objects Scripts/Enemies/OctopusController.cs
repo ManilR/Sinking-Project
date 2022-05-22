@@ -61,8 +61,9 @@ public class OctopusController : MonoBehaviour
         }
         if(health <= 0)
         {
-            Destroy(gameObject);
             m_block.GetComponent<BoxCollider2D>().isTrigger = true;
+            EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
+            Destroy(gameObject);
         }
 
         health -= Time.deltaTime;
