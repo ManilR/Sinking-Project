@@ -2085,12 +2085,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainEventsArray:
-  - OCTOPUS
   - ENEMY_BOAT
+  - OCTOPUS
   SmallEventsArray:
   - SHARK
   - SEAGULL
   scorePanel: {fileID: 503057036}
+  timer: 0
 --- !u!1 &702414149
 GameObject:
   m_ObjectHideFlags: 0
