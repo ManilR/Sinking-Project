@@ -84,8 +84,8 @@ Louis Prevost : Création / Recherche de tous les éléments du jeu, son, partic
 Origine des assets
 --------------------------------------------------------------------
 Image du menu principal, background du jeu, paneaux du HUD : https://www.shutterstock.com/ : Droit d'utilisation
-Personnage et leurs animations : https://www.artstation.com/marketplace/p/w627/tiny-style-character-pirate-2d-character-sprite (2€) : Droit d'utilisation
-Texture de bois, mas du bateau et cordes : Source inconnue (Google Image) : Pas le droit d'exploitation
+Personnages et leurs animations : https://www.artstation.com/marketplace/p/w627/tiny-style-character-pirate-2d-character-sprite (2€) : Droit d'utilisation
+Texture de bois, mât du bateau et cordes : Source inconnue (Google Image) : Pas le droit d'exploitation
 Icones des contrôles : https://www.flaticon.com/ : Droit d'utilisation
 
 Squelette des bateaux, ennemis, décorations, particules, Logo, animations : Fait à la main (Louis Prevost) : Droit d'utilisation
