@@ -30,13 +30,16 @@ public class ControlsEvent : SDD.Events.Event
 {
 }
 
-
-
 public class GameStatisticsChangedEvent : SDD.Events.Event
 {
 	public float eBestScore { get; set; }
 	public float eScore { get; set; }
 	public int eNLives { get; set; }
+}
+
+public class GameLevelEvent : SDD.Events.Event
+{
+	public float levelCoef {get; set;}
 }
 #endregion
 
@@ -47,6 +50,7 @@ public class EscapeButtonClickedEvent : SDD.Events.Event
 public class PlayButtonClickedEvent : SDD.Events.Event
 {
 	public bool fromMenu { get; set; }
+	public int levelIndex { get; set; }
 }
 public class ResumeButtonClickedEvent : SDD.Events.Event
 {

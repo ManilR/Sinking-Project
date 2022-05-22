@@ -1,4 +1,5 @@
 ﻿using SDD.Events;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject m_ControlsPanel;
 
     List<GameObject> m_Panels = new List<GameObject>();
-
+    private int m_index_level = 0;
     void OpenPanel(GameObject panel)
     {
         m_Panels.ForEach(item => {
@@ -97,7 +98,7 @@ public class MenuManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("MenuMusic");
         FindObjectOfType<AudioManager>().Play("PlayingMusic");
         FindObjectOfType<AudioManager>().Play("PlayingAmbiant");
-        EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = true });
+        EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = true, levelIndex=m_index_level});
     }
 
     public void PlayButtonFromPauseClickedUICallback()
@@ -123,6 +124,13 @@ public class MenuManager : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("PlankMenu");
         EventManager.Instance.Raise(new CreditsButtonClickedEvent());
+    }
+
+    public void LevelButtonClickedUICallback()
+    {
+        m_index_level++;
+        m_index_level %= GameManager.GameLevels.Length;
+        m_MenuPanel.transform.GetChild(5).GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GameManager.GameLevels[m_index_level].ToString() + " >";
     }
     #endregion
 }

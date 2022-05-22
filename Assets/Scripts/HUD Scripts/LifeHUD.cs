@@ -15,6 +15,6 @@ public class LifeHUD : MonoBehaviour
     void Update()
     {
         this.transform.localScale = new Vector3(
-            Boat.GetComponent<BoatDamage>().health / Boat.GetComponent<BoatDamage>().MAX_HEALTH, 1, 1);
+            Boat.GetComponent<BoatDamage>().health / Boat.GetComponent<BoatDamage>().initHealth, 1, 1);
     }
 }
