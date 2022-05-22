@@ -5818,6 +5818,7 @@ Transform:
   - {fileID: 685199892}
   - {fileID: 1862073606}
   - {fileID: 1563692069}
+  - {fileID: 1488982086}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5998,6 +5999,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 33.241516, y: 22.649464}
   m_EdgeRadius: 0
+--- !u!1 &1290650993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6323600995452913622, guid: cb9973ee89ee2594282f76a1f2555a4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6323600995194793053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1290650994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290650993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0073b76e5bce20c43bd5f5bf9ab7755e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315908113
 GameObject:
   m_ObjectHideFlags: 0
@@ -6741,6 +6760,104 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448343012}
   m_CullTransparentMesh: 1
+--- !u!1 &1488982085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488982086}
+  - component: {fileID: 1488982087}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1488982086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488982085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1151732898}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1488982087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488982085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776782930161b8243806e0c7edb16b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: CannonFire1
+    clip: {fileID: 8300000, guid: f767374f3e5488348a0d78fc6df7c53d, type: 3}
+    volume: 1
+    pitch: 1.2
+    source: {fileID: 0}
+    loop: 0
+  - name: CannonFire2
+    clip: {fileID: 8300000, guid: 515715bc31b27da459dbdd36d17472e6, type: 3}
+    volume: 1
+    pitch: 0.8
+    source: {fileID: 0}
+    loop: 0
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: c4a5e69931e5a91459ea99b24acb3623, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: PlayingMusic
+    clip: {fileID: 8300000, guid: 91dc2ed447863224e908269521fc4c2e, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: PlayingAmbiant
+    clip: {fileID: 8300000, guid: 54beb46163a922e42be61478d11c89b1, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Swords
+    clip: {fileID: 8300000, guid: 54098e8c67fa9de4f96ca6998ad29a15, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Footstep
+    clip: {fileID: 8300000, guid: 41ad62f3108814949b5a8b4cab281212, type: 3}
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: PlankMenu
+    clip: {fileID: 8300000, guid: 17c3bfb4bb14ef346a227953cba95569, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: PlankRepair
+    clip: {fileID: 8300000, guid: 17c3bfb4bb14ef346a227953cba95569, type: 3}
+    volume: 0.05
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
 --- !u!1 &1559109626
 GameObject:
   m_ObjectHideFlags: 0
@@ -8195,6 +8312,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6323600995194793053}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1923156486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6323600995452913622, guid: cb9973ee89ee2594282f76a1f2555a4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2002234765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1923156487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923156486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0073b76e5bce20c43bd5f5bf9ab7755e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002234765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8232,6 +8367,11 @@ PrefabInstance:
       propertyPath: material
       value: 
       objectReference: {fileID: 6200000, guid: cd26c6e20fe38f44d98d07f59691b013, type: 2}
+    - target: {fileID: 6323600995452913614, guid: cb9973ee89ee2594282f76a1f2555a4b,
+        type: 3}
+      propertyPath: footStepTimer
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6323600995452913617, guid: cb9973ee89ee2594282f76a1f2555a4b,
         type: 3}
       propertyPath: m_RootOrder
@@ -8730,6 +8870,11 @@ PrefabInstance:
       propertyPath: material
       value: 
       objectReference: {fileID: 6200000, guid: cd26c6e20fe38f44d98d07f59691b013, type: 2}
+    - target: {fileID: 6323600995452913614, guid: cb9973ee89ee2594282f76a1f2555a4b,
+        type: 3}
+      propertyPath: footStepTimer
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6323600995452913616, guid: cb9973ee89ee2594282f76a1f2555a4b,
         type: 3}
       propertyPath: m_Mass

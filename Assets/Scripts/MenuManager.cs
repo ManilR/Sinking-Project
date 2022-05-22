@@ -93,24 +93,35 @@ public class MenuManager : MonoBehaviour
 
     public void PlayButtonFromMenuClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("Swords");
+        FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        FindObjectOfType<AudioManager>().Play("PlayingMusic");
+        FindObjectOfType<AudioManager>().Play("PlayingAmbiant");
         EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = true });
     }
 
     public void PlayButtonFromPauseClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("PlankMenu");
         EventManager.Instance.Raise(new PlayButtonClickedEvent() { fromMenu = false });
     }
 
     public void MenuButtonClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("PlankMenu");
+        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        FindObjectOfType<AudioManager>().Stop("PlayingMusic");
+        FindObjectOfType<AudioManager>().Stop("PlayingAmbiant");
         EventManager.Instance.Raise(new MainMenuButtonClickedEvent());
     }
     public void ControlsButtonClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("PlankMenu");
         EventManager.Instance.Raise(new ControlsButtonClickedEvent());
     }
     public void CreditsButtonClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("PlankMenu");
         EventManager.Instance.Raise(new CreditsButtonClickedEvent());
     }
     #endregion

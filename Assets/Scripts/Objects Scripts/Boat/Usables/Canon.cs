@@ -91,6 +91,10 @@ public class Canon : MonoBehaviour
             Rigidbody2D rb = cannonBall.GetComponent<Rigidbody2D>();
             rb.AddForce(initialVelocity, ForceMode2D.Impulse);
 
+            string soundName = "CannonFire" + Random.Range(1, 3).ToString();
+            FindObjectOfType<AudioManager>().Play(soundName);
+
+
             shootCD = 0;
         }
              

@@ -142,7 +142,10 @@ public class PlayerController : MonoBehaviour
             else
             {
                 if (Input.GetButtonDown("Jump_" + id))
+                {
                     UsableEventManager.current.TriggerAction(usableID);
+                    FindObjectOfType<AudioManager>().Play("PlankRepair");
+                }
                 if (yInput == 1)
                     UsableEventManager.current.TriggerUp(usableID);
                 if (yInput == -1)
