@@ -20,7 +20,7 @@ public class OctopusController : MonoBehaviour
     private Rigidbody2D rb;
     private Rigidbody2D rbBoat;
 
-    private float test = 0;
+    private float timer = 0;
 
     [SerializeField] public float health = 60;
 
@@ -53,6 +53,12 @@ public class OctopusController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if(timer >= 8)
+        {
+            m_Boat.GetComponent<BoatDamage>().HullDamage();
+            timer = 0;
+        }
         if(health <= 0)
         {
             Destroy(gameObject);

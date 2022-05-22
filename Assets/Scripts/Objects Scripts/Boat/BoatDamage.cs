@@ -84,7 +84,7 @@ public class BoatDamage : MonoBehaviour
         }
     }
 
-    private void HullDamage()
+    public void HullDamage()
     {
         if(damageTimer > 0.1)
         {
