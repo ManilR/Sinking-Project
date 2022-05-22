@@ -132,9 +132,9 @@ public class EnemyBoat : MonoBehaviour
             movCD += Time.deltaTime;
             //rb.velocity = rbTarget.velocity;
             if (movCD < 4f)
-                newVelocity.Set(rbTarget.velocity.x * 0f, speedY);
+                newVelocity.Set(rbTarget.velocity.x * 0.2f, speedY);
             else
-                newVelocity.Set(rbTarget.velocity.x * 1.25f, speedY);
+                newVelocity.Set(rbTarget.velocity.x * 1.55f, speedY);
             if (movCD > 8f)
                 movCD = 0;
         }
