@@ -128,6 +128,7 @@ public class MenuManager : MonoBehaviour
 
     public void LevelButtonClickedUICallback()
     {
+        FindObjectOfType<AudioManager>().Play("PlankMenu");
         m_index_level++;
         m_index_level %= GameManager.GameLevels.Length;
         m_MenuPanel.transform.GetChild(5).GetChild(0).GetComponent<UnityEngine.UI.Text>().text = GameManager.GameLevels[m_index_level].ToString() + " >";
