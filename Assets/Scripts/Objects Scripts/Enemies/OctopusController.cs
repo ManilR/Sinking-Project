@@ -54,7 +54,7 @@ public class OctopusController : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= 8)
+        if(timer >= 10)
         {
             m_Boat.GetComponent<BoatDamage>().HullDamage();
             timer = 0;
