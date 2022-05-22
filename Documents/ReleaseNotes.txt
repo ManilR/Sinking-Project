@@ -44,7 +44,7 @@ Remarques
 Répartition des rôles 
 --------------------------------------------------------------------
 Développeurs : 
-Manil Richard : Mouvement du bateau, interactions joueurs / environnement, événements bateau ennemi.
+Manil Richard : Mouvement du bateau, éléments du bateau("Usables"), interactions joueurs / usables, événements bateau ennemi.
 Timothée Lefebvre : Evenements Shark, Seagull et Octopus.
 Killian Pelletier : Contrôles des joueurs (clavier/manettes), gestion des événements du jeu et des panneaux du jeu.
 
