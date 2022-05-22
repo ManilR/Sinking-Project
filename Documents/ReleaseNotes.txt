@@ -32,7 +32,7 @@ Capacités des joueurs
 --------------------------------------------------------------------
 
 Les joueurs peuvent se déplacer et sauter sur le bateau, ainsi que monter et descendre les échelles.
-Ils peuvent interagir avec les canons pour les orienter et tirer.
+Ils peuvent interagir avec les canons pour les orienter (mouvement haut/bas), régler l'intensité (mouvement gauche/droite) puis tirer.
 Ils peuvent monter et descendre la voile, cela a un effet sur la vitesse de bateau.
 Ils peuvent reboucher les trous causés par les ennemis (requin, mouette et bateau ennemi).
 
