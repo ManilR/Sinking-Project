@@ -127,7 +127,7 @@ public class Canon : MonoBehaviour
     {
         if (id == this.ID)
         {
-            if (power < 45)
+            if (power < 55)
             {
                 Debug.Log(power);
                 power += 0.03f;
