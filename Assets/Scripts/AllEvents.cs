@@ -47,6 +47,7 @@ public class EscapeButtonClickedEvent : SDD.Events.Event
 public class PlayButtonClickedEvent : SDD.Events.Event
 {
 	public bool fromMenu { get; set; }
+	public int levelIndex { get; set; }
 }
 public class ResumeButtonClickedEvent : SDD.Events.Event
 {

@@ -10,6 +10,7 @@ public class BoatDamage : MonoBehaviour
     private List<Transform> holes = new List<Transform>();
 
     [SerializeField] public float MAX_HEALTH;
+    public float initHealth = 0;
     public float health = 0;
 
     private int nbHoles = 0;
@@ -28,7 +29,9 @@ public class BoatDamage : MonoBehaviour
 
     void Start()
     {
-        health = MAX_HEALTH;
+        initHealth = MAX_HEALTH;
+        initHealth *= GameManager.Instance.gameLevelCoef;
+        health = initHealth;
         foreach(Transform hole in HoleParent)
         {
             if(hole.name != "SharkBite")

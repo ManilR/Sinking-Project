@@ -5,11 +5,14 @@ using System.Collections;
 
 public enum GAMESTATE { menu, play, pause, victory, gameover, credits, controls }
 
+
 // Main manager class, handle game state, launch game events
 public class GameManager : MonoBehaviour
 {   
     public string[] MainEventsArray = { "ENEMY_BOAT" };
     public string[] SmallEventsArray = { "SHARK", "SEAGULL", "OCTOPUS" };
+    public static string[] GameLevels = { "Easy", "Medium", "Hard" };
+    public static float[] GameLevelCoefs = { 1.2f, 1f, 0.8f };
     [SerializeField] private GameObject scorePanel;
 
     private static GameManager m_Instance;
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
     private int IndexSmallEvent = 0;
 
     public bool IsPlaying { get { return m_State == GAMESTATE.play; } }
+
+    public float gameLevelCoef { get; set; }
 
     void SetState(GAMESTATE newState)
     {
@@ -162,6 +167,7 @@ public class GameManager : MonoBehaviour
         Play();
         if (e.fromMenu)
         {
+            gameLevelCoef = GameManager.GameLevelCoefs[e.levelIndex];
             StartCoroutine(LaunchSmallEvent());
             Invoke(nameof(LaunchMainEventWithOffset), 6);
         }
