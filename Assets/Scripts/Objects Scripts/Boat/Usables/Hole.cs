@@ -16,6 +16,7 @@ public class Hole : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponentInChildren<ParticleSystem>().Stop();
         usableScript = this.GetComponent<Usable>();
 
         objectID objectID = this.GetComponent<objectID>();
@@ -33,11 +34,11 @@ public class Hole : MonoBehaviour
 
         isUsed = usableScript.isUsed;
 
-        if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled)
+        if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isStopped)
         {
             gameObject.GetComponentInChildren<ParticleSystem>().Play();
         }
-        else
+        if(!gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isPlaying)
         {
             gameObject.GetComponentInChildren<ParticleSystem>().Stop();
         }

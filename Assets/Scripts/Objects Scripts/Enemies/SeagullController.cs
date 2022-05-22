@@ -35,7 +35,7 @@ public class SeagullController : MonoBehaviour
 
         // Hide the hole by default
         m_SeagullHoleSprite = m_SeagullHole.GetComponent<SpriteRenderer>();
-        m_SeagullHoleSprite.enabled = false;
+        //m_SeagullHoleSprite.enabled = false;
     }
 
     // Update is called once per frame
