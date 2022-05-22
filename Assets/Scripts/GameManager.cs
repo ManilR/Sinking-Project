@@ -8,8 +8,8 @@ public enum GAMESTATE { menu, play, pause, victory, gameover, credits, controls 
 // Main manager class, handle game state, launch game events
 public class GameManager : MonoBehaviour
 {   
-    public string[] MainEventsArray = { "ENEMY_BOAT" };
-    public string[] SmallEventsArray = { "SHARK", "SEAGULL", "OCTOPUS" };
+    public string[] MainEventsArray = { "ENEMY_BOAT", "OCTOPUS" };
+    public string[] SmallEventsArray = { "SHARK", "SEAGULL"};
     [SerializeField] private GameObject scorePanel;
 
     private static GameManager m_Instance;

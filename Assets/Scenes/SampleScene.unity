@@ -1529,11 +1529,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainEventsArray:
+  - OCTOPUS
   - ENEMY_BOAT
   SmallEventsArray:
   - SHARK
   - SEAGULL
-  - OCTOPUS
   scorePanel: {fileID: 503057036}
 --- !u!1 &702414149
 GameObject:
@@ -5360,7 +5360,7 @@ PrefabInstance:
     - target: {fileID: 7287955357953084505, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: 81.3
       objectReference: {fileID: 0}
     - target: {fileID: 7287955357953084505, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
@@ -5371,6 +5371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7563522397006472503, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 76.7
       objectReference: {fileID: 0}
     - target: {fileID: 7563522397006472503, guid: 7edd3d5ffc808204d8cb1bd3fb6b035e,
         type: 3}
@@ -8893,7 +8898,7 @@ PrefabInstance:
     - target: {fileID: 6323600995452913617, guid: cb9973ee89ee2594282f76a1f2555a4b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.03
+      value: 46.61
       objectReference: {fileID: 0}
     - target: {fileID: 6323600995452913617, guid: cb9973ee89ee2594282f76a1f2555a4b,
         type: 3}

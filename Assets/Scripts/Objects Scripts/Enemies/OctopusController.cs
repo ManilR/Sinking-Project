@@ -16,6 +16,11 @@ public class OctopusController : MonoBehaviour
     private bool m_AttackIsDone = false;
     private bool m_IsApproaching = true;
 
+    private Rigidbody2D rb;
+    private Rigidbody2D rbBoat;
+
+    [SerializeField] public float health = 60;
+
     private void OnEnable()
     {
         EventManager.Instance.AddListener<ResetMapEvent>(ResetMapEventCallback);
@@ -35,6 +40,8 @@ public class OctopusController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = this.GetComponent<Rigidbody2D>();
+        rbBoat = m_Boat.GetComponent<Rigidbody2D>();
         m_Attacking = false;
         boatMovement = m_Boat.GetComponent<BoatMovement>();
     }
@@ -42,12 +49,13 @@ public class OctopusController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (m_IsApproaching)
+        if(health <= 0)
         {
-            transform.position = Vector3.MoveTowards(transform.position, m_HangingPoint.transform.position, m_Speed * Time.deltaTime);
-            // Debug.Log("move towards");
+            Destroy(gameObject);
         }
+
+        health -= Time.deltaTime;
+        movement();
 
         if (Vector2.Distance(transform.position, m_HangingPoint.transform.position) < 2f)
         {
@@ -58,19 +66,29 @@ public class OctopusController : MonoBehaviour
      
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Boat" && m_IsApproaching)
+        if(collision.gameObject.tag == "Boat")
         {
             m_IsApproaching = false;
-            
-            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-            
-           /* Vector2 newVelocity = Vector2.zero;
-
-            var math = boatMovement.movementSpeed * boatMovement.movementSpeed * Mathf.Pow(10, -1) * -1;
-            newVelocity.Set(math, 0.0f); // a contrary force
-            this.GetComponent<Rigidbody2D>().velocity = newVelocity;*/
+            m_Attacking = true;
         }
+    }
+
+    private void movement()
+    {
+        if (m_IsApproaching)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, m_HangingPoint.transform.position, m_Speed * Time.deltaTime);
+            // Debug.Log("move towards");
+        }
+        else
+        {
+            rb.velocity = rbBoat.velocity;
+        }
+
     }
 }
