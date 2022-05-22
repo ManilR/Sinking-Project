@@ -31,12 +31,15 @@ public class GameManager : MonoBehaviour
 
     public float gameLevelCoef { get; set; }
 
+    public float timer;
+
     void SetState(GAMESTATE newState)
     {
         m_State = newState;
         switch (m_State)
         {
             case GAMESTATE.menu:
+                timer = 0;
                 EventManager.Instance.Raise(new GameMenuEvent());
                 EventManager.Instance.Raise(new ResetMapEvent());
                 break;
@@ -124,6 +127,11 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.Raise(new NewEventEvent(){ EventName = SmallEventsArray[IndexSmallEvent] });
         IndexSmallEvent++;
         IndexSmallEvent %= SmallEventsArray.Length;
+    }
+
+    private void Update()
+    {
+        if(IsPlaying) timer += Time.deltaTime;
     }
 
     private void FixedUpdate()

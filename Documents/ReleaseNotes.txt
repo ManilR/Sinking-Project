@@ -40,10 +40,12 @@ Ils peuvent reboucher les trous causés par les ennemis (requin, mouette et bate
 Remarques 
 --------------------------------------------------------------------
 
-En ce qui concerne les limitations et bug du jeu, nous avons identifiés les points suivants : 
+En ce qui concerne les limitations et bug du jeu, nous avons identifié les points suivants : 
 
 - Mouvement non voulu des joueurs vers la proue du bateau, les joueurs glissent mais nous ne pouvons pas mettre d'adhérence aux matériaux car cela empêcherait les joueurs de gravir les pentes.
 - Mouvements plus fluides / réalistes des ennemis.
+- Annonce des événements principaux qui n'apparaissent pas car un autre main event est déjà sur la scène.
+  Ex. Annonce d'un bateau ennemi alors qu'il y a déjà un poulpe -> le bateau ennemi n'apparait pas.
 
 Pour ce qui est des voies d'améliorations nous pourrions ajouter dans le futur ces éléments : 
 
