@@ -10,7 +10,7 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private GameObject enemyBoat;
     [SerializeField] private GameObject waterWave2D;
     [SerializeField] private Transform enemyBoatTransform;
-    private bool isEnemyBoat = false;
+    
 
     // Shark
     [SerializeField] private GameObject shark_prefab;
@@ -30,6 +30,7 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private GameObject octopus_hanging_point;
     [SerializeField] private GameObject octopus_block;
 
+    private bool isMainEvent = false;
     #endregion
 
     [SerializeField] private GameObject scorePanel;
@@ -53,14 +54,14 @@ public class GameEventManager : MonoBehaviour
         switch (e.EventName)
         {
             case "ENEMY_BOAT":
-                if(isEnemyBoat)
+                if(isMainEvent)
                 {
                     break;
                 }
                 GameObject enemy_boat = Instantiate(enemyBoatPrefab, enemyBoatTransform.position, Quaternion.identity);
                 enemy_boat.GetComponent<EnemyBoat>().target = boat;
                 enemy_boat.GetComponent<EnemyBoat>().water = waterWave2D;
-                isEnemyBoat = true;
+                isMainEvent = true;
                 break;
 
             case "SHARK":
@@ -76,10 +77,15 @@ public class GameEventManager : MonoBehaviour
                 seagull.GetComponent<SeagullController>().m_Sail = sail;
                 break;
             case "OCTOPUS":
+                if (isMainEvent)
+                {
+                    break;
+                }
                 GameObject octopus = Instantiate(octopus_prefab, octopusTransform.position, Quaternion.identity);
                 octopus.GetComponent<OctopusController>().m_HangingPoint = octopus_hanging_point;
                 octopus.GetComponent<OctopusController>().m_Boat = boat;
                 octopus.GetComponent<OctopusController>().m_block = octopus_block;
+                isMainEvent = true;
                 break;
 
             default:
@@ -91,9 +97,9 @@ public class GameEventManager : MonoBehaviour
     // Add bonus when enemy boat is sinked
     void EventCompletedEventCallback(EventCompletedEvent e)
     {
-        if(e.EventName == "ENEMY_BOAT")
+        if(e.EventName == "ENEMY_BOAT" || e.EventName == "OCTOPUS")
         {
-            isEnemyBoat = false;
+            isMainEvent = false;
         }
         scorePanel.GetComponent<ScoreHUD>().gameScore += 500;
     }
