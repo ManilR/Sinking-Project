@@ -64,8 +64,20 @@ Timothée Lefebvre : Evenements Shark, Seagull et Octopus.
 Killian Pelletier : Contrôles des joueurs (clavier/manettes), gestion des événements du jeu et des panneaux du jeu.
 
 Graphistes / designer
-Louis Prevost : Design de tous les éléments du jeu, son et logo.
+Louis Prevost : Création / Recherche de tous les éléments du jeu, son, particules et logo.
 
 --------------------------------------------------------------------
 Origine des assets
 --------------------------------------------------------------------
+Image du menu principal, background du jeu, paneaux du HUD : https://www.shutterstock.com/ : Droit d'utilisation
+Personnage et leurs animations : https://www.artstation.com/marketplace/p/w627/tiny-style-character-pirate-2d-character-sprite (2€) : Droit d'utilisation
+Texture de bois, mas du bateau et cordes : Source inconnue (Google Image) : Pas le droit d'exploitation
+Icones des contrôles : https://www.flaticon.com/ : Droit d'utilisation
+
+Squelette des bateaux, ennemis, décorations, particules, Logo, animations : Fait à la main (Louis Prevost) : Droit d'utilisation
+
+WaterWaves2D (Gestion de la phyique de l'eau) : https://assetstore.unity.com/packages/tools/particles-effects/water-waves-2d-156972 (4.47€) : Droit d'utilisation
+
+Musique : https://www.youtube.com/ : Pas le droit d'exploitation
+Sons du jeu : https://www.epidemicsound.com/ : Droit d'utilisation
+
