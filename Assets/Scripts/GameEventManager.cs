@@ -28,6 +28,7 @@ public class GameEventManager : MonoBehaviour
     [SerializeField] private GameObject octopus_prefab;
     [SerializeField] private Transform octopusTransform;
     [SerializeField] private GameObject octopus_hanging_point;
+    [SerializeField] private GameObject octopus_block;
 
     #endregion
 
@@ -78,6 +79,7 @@ public class GameEventManager : MonoBehaviour
                 GameObject octopus = Instantiate(octopus_prefab, octopusTransform.position, Quaternion.identity);
                 octopus.GetComponent<OctopusController>().m_HangingPoint = octopus_hanging_point;
                 octopus.GetComponent<OctopusController>().m_Boat = boat;
+                octopus.GetComponent<OctopusController>().m_block = octopus_block;
                 break;
 
             default:

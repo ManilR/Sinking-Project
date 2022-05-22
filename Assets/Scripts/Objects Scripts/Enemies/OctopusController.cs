@@ -10,6 +10,7 @@ public class OctopusController : MonoBehaviour
     [SerializeField] public GameObject m_Boat;
     [SerializeField] public float m_AttackDuration = 15;
     [SerializeField] public GameObject m_HangingPoint;
+    [SerializeField] public GameObject m_block;
 
     private BoatMovement boatMovement;
     private bool m_Attacking = false;
@@ -44,6 +45,7 @@ public class OctopusController : MonoBehaviour
         rbBoat = m_Boat.GetComponent<Rigidbody2D>();
         m_Attacking = false;
         boatMovement = m_Boat.GetComponent<BoatMovement>();
+        m_block.GetComponent<BoxCollider2D>().isTrigger = false;
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class OctopusController : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            m_block.GetComponent<BoxCollider2D>().isTrigger = true;
         }
 
         health -= Time.deltaTime;
