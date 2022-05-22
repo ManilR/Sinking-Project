@@ -13,7 +13,7 @@ Vous pouvez utiliser soit le clavier soit des manettes de consoles
       - Joueur 2 
                 - Diriger : Flèches directionnelles
                 - Sauter / Tirer : Pavé numérique 0
-                - Interagir : Pavé numérique +
+                - Interagir : Entrer
 
   Manettes : 
     - Diriger : Joystick gauche
