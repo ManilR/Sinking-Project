@@ -2405,8 +2405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainEventsArray:
-  - OCTOPUS
   - ENEMY_BOAT
+  - OCTOPUS
   SmallEventsArray:
   - SHARK
   - SEAGULL
