@@ -11,9 +11,9 @@ It's a single PC multiplayer game, to play you can use :
 - Keyboard : ZQSD + Directionnal arrows
 - Controllers : Connect them before launching the game.
 
-![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/menu.png?raw=true)
-![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/ingame1.png?raw=true)
-![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/ingame2.png?raw=true)
+![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/Screenshot_Sinking_1.png?raw=true)
+![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/Screenshot_Sinking_2.png?raw=true)
+![alt text](https://github.com/ManilR/Sinking-Project/blob/main/Documents/Images/Screenshot_Sinking_3.png?raw=true)
 
 ## Team 
 * Manil Richard
