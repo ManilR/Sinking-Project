@@ -48,25 +48,28 @@ public class OctopusController : MonoBehaviour
         m_Attacking = false;
         boatMovement = m_Boat.GetComponent<BoatMovement>();
         m_block.GetComponent<BoxCollider2D>().isTrigger = false;
+        m_block.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= 10)
+        health -= Time.deltaTime;
+        if (timer >= 10)
         {
             m_Boat.GetComponent<BoatDamage>().HullDamage();
             timer = 0;
         }
         if(health <= 0)
         {
-            m_block.GetComponent<BoxCollider2D>().isTrigger = true;
+            //m_block.GetComponent<BoxCollider2D>().isTrigger = true;
+            m_block.SetActive(false);
             EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
             Destroy(gameObject);
         }
 
-        health -= Time.deltaTime;
+        
         movement();
 
         if (Vector2.Distance(transform.position, m_HangingPoint.transform.position) < 2f)

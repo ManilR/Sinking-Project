@@ -42,7 +42,7 @@ public class SharkController : MonoBehaviour
     void proceedAttackOnBoat()
     {
         if (m_Swimming && !m_Attacking)
-        {
+        {   
             var step = m_Speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, m_SharkHole.transform.position, step);
         }
