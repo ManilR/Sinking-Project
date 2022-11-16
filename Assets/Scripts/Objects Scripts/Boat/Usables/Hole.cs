@@ -38,11 +38,11 @@ public class Hole : MonoBehaviour
         {
             isUsed = usableScript.isUsed;
 
-            if (gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isStopped)
+            if (gameObject.activeSelf && gameObject.GetComponentInChildren<ParticleSystem>().isStopped)
             {
                 gameObject.GetComponentInChildren<ParticleSystem>().Play();
             }
-            if (!gameObject.GetComponentInChildren<SpriteRenderer>().enabled && gameObject.GetComponentInChildren<ParticleSystem>().isPlaying)
+            if (!gameObject.activeSelf && gameObject.GetComponentInChildren<ParticleSystem>().isPlaying)
             {
                 gameObject.GetComponentInChildren<ParticleSystem>().Stop();
             }
@@ -59,18 +59,21 @@ public class Hole : MonoBehaviour
         if (fixing < 0)
             fixing = 0;
 
-        if(sprite.enabled == false)
-        {
-            boxCollider.enabled = false;
-        }
-        else
-            boxCollider.enabled = true;
+        //if(sprite.enabled == false)
+        //{
+        //    boxCollider.enabled = false;
+        //}
+        //else
+        //    boxCollider.enabled = true;
 
 
     }
 
 
-
+    private void OnEnable()
+    {
+        fixing = 0;
+    }
     private void fix(int id)
     {
         if (id == this.ID)
@@ -79,8 +82,8 @@ public class Hole : MonoBehaviour
             if (fixing >= 10f)
             {
                 this.GetComponentInParent<BoatDamage>().health++;
-                sprite.enabled = false;
-                fixing = 0;
+                this.gameObject.SetActive(false);
+                
             }
                 
         }

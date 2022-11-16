@@ -46,7 +46,7 @@ public class BoatMovement : MonoBehaviour
 
         movementSpeed = BASE_SPEED * sail.localScale.y;
 
-        if (sailHole.GetComponent<SpriteRenderer>().enabled == true)
+        if (sailHole.activeSelf == true)
             movementSpeed = BASE_SPEED / 2;
     }
     private void checkMoving()
@@ -85,6 +85,6 @@ public class BoatMovement : MonoBehaviour
             initPos = rb.transform.position;
         }
         // hide the seagull hole by default
-        sailHole.GetComponent<SpriteRenderer>().enabled = false;
+        sailHole.SetActive(false);
     }
 }

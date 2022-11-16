@@ -41,15 +41,25 @@ public class SeagullController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // freeze rotation
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
-
-        proceedAttackOnBoat();
-        tearSail();
+      
+        //if (m_SeagullHole.activeSelf)
+        //{
+        //   m_AttackIsDone = true;
+        //}
+        //else
+        //{
+            //proceedAttackOnBoat();
+            tearSail();
+        //}
+        
 
         if (m_AttackIsDone)
         {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 100, transform.position.y, transform.position.z), m_Speed * 2 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 100, transform.position.y, transform.position.z), m_Speed  * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, m_SeagullHole.transform.position, m_Speed * Time.deltaTime);
         }
     }
 
@@ -59,21 +69,21 @@ public class SeagullController : MonoBehaviour
         
             if (Vector2.Distance(transform.position, m_SeagullHole.transform.position) < 2f && m_Attacking)
             {
-                transform.position = m_SeagullHole.transform.position;
+                //transform.position = m_SeagullHole.transform.position;
 
-                if (m_AttackDuration > 0)
-                {
-                    m_AttackDuration -= Time.deltaTime;
-                }
-                else
-                {
+                //if (m_AttackDuration > 0)
+                //{
+                //    m_AttackDuration -= Time.deltaTime;
+                //}
+                //else
+                //{
                     m_Attacking = false;
                     m_Flying = true;
 
                     m_AttackIsDone = true;
-
-                    m_SeagullHoleSprite.enabled = true; // show hole
-                }
+                    m_SeagullHole.SetActive(true);
+                    //m_SeagullHoleSprite. = true; // show hole
+                //}
             }
         } else
         {
@@ -86,8 +96,7 @@ public class SeagullController : MonoBehaviour
     {
         if (m_Flying && !m_Attacking)
         {
-            var step = m_Speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, m_SeagullHole.transform.position, step);
+            transform.position = Vector3.MoveTowards(transform.position, m_SeagullHole.transform.position, m_Speed * Time.deltaTime);
         }
     }
 

@@ -68,6 +68,9 @@ public class GameManager : MonoBehaviour
 
     void Play()
     {
+        if(m_State != GAMESTATE.pause)
+            EventManager.Instance.Raise(new ResetMapEvent());
+
         Time.timeScale = 1;
         SetState(GAMESTATE.play);
     }
@@ -106,6 +109,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetState(GAMESTATE.menu);
+        
     }
 
     public void CloseApplication()

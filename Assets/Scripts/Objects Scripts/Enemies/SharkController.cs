@@ -88,7 +88,8 @@ public class SharkController : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 180, 0); // flip on himself
                 transform.Rotate(new Vector3(0, 0, -20)); // rotate to the bottom
 
-                m_SharkHoleSprite.enabled = true; // show hole
+                m_SharkHole.SetActive(true);
+                //m_SharkHoleSprite.enabled = true; // show hole
                // Debug.Log("fin de l'attaque");
             }
         }

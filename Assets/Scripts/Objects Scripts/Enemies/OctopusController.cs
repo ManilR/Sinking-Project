@@ -47,7 +47,7 @@ public class OctopusController : MonoBehaviour
         rbBoat = m_Boat.GetComponent<Rigidbody2D>();
         m_Attacking = false;
         boatMovement = m_Boat.GetComponent<BoatMovement>();
-        m_block.GetComponent<BoxCollider2D>().isTrigger = false;
+        //m_block.GetComponent<BoxCollider2D>().isTrigger = false;
         m_block.SetActive(true);
     }
 
@@ -67,6 +67,7 @@ public class OctopusController : MonoBehaviour
             m_block.SetActive(false);
             EventManager.Instance.Raise(new EventCompletedEvent() { EventName = EventName });
             Destroy(gameObject);
+            m_block.SetActive(false);
         }
 
         

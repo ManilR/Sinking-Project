@@ -36,7 +36,7 @@ public class BoatDamage : MonoBehaviour
         {
             if(hole.name != "SharkBite")
             {
-                hole.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                //hole.gameObject.SetActive(true);
                 holes.Add(hole);
                 nbHoles++;
             }
@@ -62,7 +62,7 @@ public class BoatDamage : MonoBehaviour
             damageTic = 0;
             foreach (Transform hole in HoleParent)
             {
-                if (hole.GetComponentInChildren<SpriteRenderer>().enabled == true)
+                if (hole.gameObject.activeSelf == true)
                 {
                     health--;
                 }
@@ -92,9 +92,9 @@ public class BoatDamage : MonoBehaviour
             int HolePos = Random.Range(0, nbHoles-1);
             for (int i = 0; i < nbHoles; i++)
             {
-                if (holes[HolePos].GetComponentInChildren<SpriteRenderer>().enabled == false)
+                if (holes[HolePos].gameObject.activeSelf == false)
                 {
-                    holes[HolePos].GetComponentInChildren<SpriteRenderer>().enabled = true;
+                    holes[HolePos].gameObject.SetActive(true);
                     break;
                 }
                 if (HolePos == nbHoles -1)
@@ -108,6 +108,6 @@ public class BoatDamage : MonoBehaviour
     void ResetMapEventCallback(ResetMapEvent e)
     {
         health = MAX_HEALTH;
-        holes.ForEach((h) => h.GetComponentInChildren<SpriteRenderer>().enabled = false);
+        holes.ForEach((h) => h.gameObject.SetActive(false));
     }
 }

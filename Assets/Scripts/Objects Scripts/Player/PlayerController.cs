@@ -363,7 +363,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            initPos = rb.transform.position;
+            if(rb != null)
+            {
+                initPos = rb.transform.position;
+            }
+            
         }
     }
 }
